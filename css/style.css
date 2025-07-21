@@ -2461,11 +2461,41 @@ margin-top: 20px;
   right: 20px;
   z-index: 9999;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
+.call-button {
+  display: none;
+  background-color: #007bff; /* Blue for Call */
+}
 
-.floating-buttons a {
-  display: flex;
+.whatsapp-button{
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+   background-color: #25D366; /* WhatsApp green */
+}
+.whatsapp-button img{
+  width: 35px;
+  height: 35px;
+}
+
+.whatsapp-button:hover,
+.call-button:hover {
+  opacity: 0.9;
+}
+
+    @media (max-width: 768px) {
+      .call-button {
+   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
@@ -2477,21 +2507,6 @@ margin-top: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: background 0.3s ease;
 }
-.whatsapp-button{
-   background-color: #25D366; /* WhatsApp green */
-}
-
-.call-button {
-  background-color: #007bff; /* Blue for Call */
-}
-
-.whatsapp-button:hover,
-.call-button:hover {
-  opacity: 0.9;
-}
-
-
-    @media (max-width: 768px) {
        .flexx {
       width: auto;
       grid-template-columns: repeat(1, 1fr);
