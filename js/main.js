@@ -206,11 +206,23 @@
       rightMenu.appendChild(ul);
     }
 
-    function toggleMobile() {
-      const menu = document.getElementById("mobileMenu");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-      document.getElementById('mobileMenu').classList.toggle('active');
-    }
+      function toggleMobile() {
+  const menu = document.getElementById("mobileMenu");
+  const tabNav = document.querySelector(".tab-nav11");
+
+  const isActive = menu.classList.contains("active");
+
+  // Toggle menu visibility
+  menu.style.display = isActive ? "none" : "flex";
+  menu.classList.toggle("active");
+
+  // Hide or show tab nav menu based on mobile menu state
+  if (!isActive) {
+    tabNav.style.display = "none";
+  } else {
+    tabNav.style.display = "block";
+  }
+}
 
     let currentPage = 'mainMenu';
 
