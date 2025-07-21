@@ -125,11 +125,11 @@
         "Web Development": [
           { label: "Web/E-Commerce Website Development", link: "/web-ecommerce-development.html" },
         ],
-          "Sale and registration on Amazon": [
-          { label: "Sale and registration on Amazon", link: "/Sales-RegistrationAmazon.html" },
+          "Sale on Amazon": [
+          { label: "Sale on Amazon", link: "/Sales-RegistrationAmazon.html" },
         ],
-         "Sale and registration on Flipkart": [
-          { label: "Sale and registration on Flipkart", link: "/Sales-RegistrationFilpkart.html" },
+         "Sale on Flipkart": [
+          { label: "Sale on Flipkart", link: "/Sales-RegistrationFilpkart.html" },
         ],
       },
       tax: {
