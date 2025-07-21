@@ -205,69 +205,6 @@
       </nav>
     </div>
   </div>
-  <div id="main-form-section" class="main-form-section">
-    <section id="form-section">
-      <form id="multiStepForm" method="POST" action="https://api.web3forms.com/submit">
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-        <input type="hidden" name="subject" value="New Business Lead" />
-        <input type="hidden" name="redirect" value="" />
-
-        <!-- Step 1 -->
-        <div class="form-step active" id="step1">
-          <h2 style="margin-bottom: 20px; text-align:center">Select Type Of <span style="color: #0077ff;">Service
-            </span></h2>
-          <select name="business_type" id="businessType" required>
-            <option value="">-- Select --</option>
-            <option value="Importer">Importer</option>
-            <option value="Merchant-Exporter">Merchant-Exporter</option>
-            <option value="Wholesaler">Wholesaler</option>
-            <option value="Distributor">Distributor</option>
-            <option value="Retailer">Retailer</option>
-            <option value="Transporter">Transporter</option>
-            <option value="Storage-without-Atmospheric-Controller-Cold">Storage without Atmospheric Controller + Cold
-            </option>
-            <option value="Food-Vending-Agencies">Food Vending Agencies</option>
-            <option value="Petty-Retailer-of-snacks/tea-shops">Petty Retailer of snacks/tea shops</option>
-            <option value="Hawker-(Itinerant / Mobile food vendor)">Hawker (Itinerant / Mobile food vendor)</option>
-            <option value="Direct-SellerSole-Proprietorship">Direct SellerSole Proprietorship</option>
-            <option style="background-color: red; font-weight:800" value="Don't-know">Don't Know</option>
-          </select>
-          <div class="buttons">
-            <button type="button" onclick="nextStep(1)">Next</button>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="form-step" id="step2">
-          <h2 style="font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 20px;">
-            <span style="color:#0077ff;">Register for GST Today</span> & Unlock
-            <span style="color:#00b14f;">Tax Benefits, Legal Protection</span> & Credibility
-
-          </h2>
-
-          <div class="floating-field">
-            <input type="text" name="name" id="name" required placeholder=" " />
-            <label for="name">Your Name</label>
-          </div>
-
-          <div class="floating-field">
-            <input type="email" name="email" id="email" required placeholder=" " />
-            <label for="email">Your Email</label>
-          </div>
-
-          <div class="floating-field">
-            <input type="tel" name="phone" id="phone" required placeholder=" " />
-            <label for="phone">Mobile Number</label>
-          </div>
-          <div class="buttons">
-            <button type="button" onclick="prevStep(2)">Back</button>
-            <button type="submit">Submit</button>
-          </div>
-        </div>
-      </form>
-    </section>
-  </div>
-  <main id="page-content">
     <div class="container1 hero">
       <div class="content">
         <div style="font-size: 14px; color: gray; margin-bottom: 10px;">
@@ -278,7 +215,7 @@
         <p>A fast, simple, and affordable way to get your GST Registration done online — with complete expert support
           and
           compliance tracking.</p>
-        <div class="flexxe">
+        <div class="flexx">
           <ul class="feature-list">
             <li>
               <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" alt="Fast Filing Icon" width="32" />
@@ -313,6 +250,14 @@
 
         </div>
       </div>
+      <div class="form-box1">
+      <h3>Register Your Company Today</h3>
+      <input type="name" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <input type="tel" placeholder="Mobile Number">
+      <input type="text" placeholder="City/Pincode">
+      <button>Get Started</button>
+    </div>
     </div>
     <div class="tab-nav11">
       <div class="tab-nav1" id="tabNav1">
@@ -921,7 +866,6 @@
         <a href="#faq">FAQ's</a>
       </div>
     </div>
-  </main>
    <footer>
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
             <div class="container py-5">
