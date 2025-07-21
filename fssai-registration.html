@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fssai Registration</title>
+    <link href="css/style.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:slnt,wght@-10..0,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+    .card-main-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+          height: 600px;
+      background: linear-gradient(135deg, #eaf6ff, #faf6f6);
+        }
+        .card-container {
+          margin: 10px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .card-main-container h1{
+       font-size: 37px;
+  font-weight: 700;
+  color: #0c1b3c;
+  margin-bottom: 40px;
+    }
+
+    .card1 {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 460px;
+      height: 220px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      transition: 0.3s ease;
+    }
+
+     .card1:hover {
+       transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 119, 255, 0.12);
+    }
+    .card1 img {
+  width: 48px;
+  margin-bottom: 15px;
+}
+    .card1 h3{
+      font-size: 24px;
+  font-weight: 600;
+  color: #0c1b3c;
+  margin-bottom: 10px;
+    }
+    .card1 p{
+      font-size: 14px;
+  color: #375477;
+    }
+    .form-box {
+      background: white;
+      width: 650px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    .form-step input,
+    .form-step select {
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      text-align: right;
+      display: flex;
+    justify-content: center;
+    }
+
+    .form-step h3{
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .form-box button {
+      padding: 10px 20px;
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .form-box button:hover {
+      background: #0668d7;
+    }
+    .floating-field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-field input,select {
+  width: 100%;
+  padding: 18px 12px 6px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  outline: none;
+}
+
+.floating-field label {
+  color: #0077ff;
+  position: absolute;
+   top:-8px;
+  left: 12px;
+  padding: 0 6px;
+  background: white;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+/* Force label to always float */
+.floating-field.always-floating label {
+  font-size: 11px;
+  color: #0077ff;
+}
+.flexxe{
+  display: grid;
+  gap:20px;
+  grid-template-columns: repeat(3,3fr);
+}
+.card-container{
+            margin-top: -90px;
+          }
+
+
+    #page-content {
+      display: none;
+    }
+
+        @media (max-width: 768px) {
+          .card-container{
+            margin-top: 0px;
+          }
+          .card-main-container {
+    height: 750px;
+  }
+          .form-box{
+            width: 350px;
+          }
+          .form-step.active {
+    margin-top: 40px;}
+        
+          .card1{
+            width: 330px;
+            height: 200px;
+          }
+            .container1 {
+                flex-direction: column;
+            }
+
+            .form-box {
+                position: static;
+                top: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> licencesonline</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <div class="navbar">
+                    <div class="nav-center" id="navCenter">
+                        <div class="nav-item" data-flyout="business">Business Setup</div>
+                        <div class="nav-item" data-flyout="tax">Tax & Compliance</div>
+                        <div class="nav-item" data-flyout="others">Others</div>
+                    </div>
+                    <div class="hamburger" onclick="toggleMobile()">☰</div>
+                </div>
+
+                <div class="flyout-wrapper" id="flyoutWrapper">
+                    <div class="flyout">
+                        <div class="flyout-left" id="leftMenu"></div>
+                        <div class="flyout-right" id="rightMenu"></div>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-wrapper" id="mobileMenu" style="display: none;">
+                    <!-- Dynamic menu pages will be injected here -->
+                </div>
+                <div class="d-none d-xl-flex flex-shrink-0 ps-4">
+                    <a href="#" class="btn btn-light btn-lg-square rounded-circle position-relative wow tada"
+                        data-wow-delay=".9s">
+                        <i class="fa fa-phone-alt fa-2x"></i>
+                        <div class="position-absolute" style="top: 7px; right: 12px;">
+                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
+                        </div>
+                    </a>
+                    <div class="d-flex flex-column ms-3">
+                        <span>Call to Our Experts</span>
+                        <a href="tel:+ 0123 456 7890"><span class="text-dark">Free: + 0123 456 7890</span></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+   <!-- Card Options -->
+<div class="card-main-container">
+ <div class="card-container" id="cardSection">
+   <div style="padding: 0px 10px 0px 20px; text-align: center;">
+  <h2 style="font-weight: 800; font-size: 29px; margin-bottom: 10px;">
+    Turn Your Recipe Into Revenue - <span class="highlight"> Start, Sell & Scale </span>
+  </h2>
+
+  <div class="fssai-icons">
+    <!-- Zomato -->
+    <div class="fssai-icon1" style="text-align: center;">
+      <img src="./img/zomato-black-logo-hd-png-701751694712223b6nhre32kf-removebg-preview.png" alt="Zomato Logo B&W" style="width: 80px; height:73px;">
+    </div>
+
+    <!-- Swiggy -->
+    <div class="fssai-icon2" style="text-align: center;">
+      <img src="./img/swiggy-black2725-removebg-preview.png" alt="Swiggy Logo B&W" style="width: 80px;margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+     <div class="fssai-icon3" style="text-align: center;">
+      <img src="./img/amazon-removebg-preview.png" alt="Swiggy Logo B&W" style="width: 80px;margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+     <div class="fssai-icon4" style="text-align: center;">
+      <img src="./img/tata-removebg-preview.png" alt="Swiggy Logo B&W" style="width: 80px;margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+     <div class="fssai-icon4" style="text-align: center;">
+      <img src="./img/jiomart-removebg-preview.png" alt="Swiggy Logo B&W" style="width: 80px;margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+      <div class="fssai-icon4" style="text-align: center;">
+      <img src="./img/flipkart-logo-black-and-white.png" alt="Swiggy Logo B&W" style="width: 80px;margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+    <div class="fssai-icon7" style="text-align: center;">
+      <img src="./img/import-export-removebg-preview.png" alt="Swiggy Logo B&W" style="margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+      <div class="fssai-icon7" style="text-align: center;">
+      <img src="./img/resturant.png" alt="Swiggy Logo B&W" style="margin-top: 10px; height: auto; margin-bottom: 10px;">
+    </div>
+  </div>
+</div>
+
+     <div class="card1" onclick="openForm('renewal')">
+      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910768.png" alt="Renewal Icon" />
+      <h3>Renewal of FSSAI Certificate</h3>
+      <p>Already registered? Renew now</p>
+    </div>
+    <div class="card1" onclick="openForm('registration')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" alt="Form Icon" width="40" />
+
+      <h3>New FSSAI Registration</h3>
+      <p>Get your FSSAI license today</p>
+    </div>
+  </div>
+
+  <form id="renewalForm" class="form-box" method="POST" action="https://api.web3forms.com/submit">
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+    <input type="hidden" name="subject" value="FSSAI Renewal Request">
+
+  <h2 style="font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 20px;">
+  <span style="color: #0077ff;">Renewal Your Food Business</span> & Get 
+  Legal FSSAI Certificate
+</h2>
+
+  <div class="floating-field">
+    <input type="text" name="name" id="name" required placeholder=" " />
+    <label for="name">Your Name</label>
+  </div>
+
+  <div class="floating-field">
+    <input type="email" name="email" id="email" required placeholder=" " />
+    <label for="email">Your Email</label>
+  </div>
+
+  <div class="floating-field">
+    <input type="tel" name="phone" id="phone" required placeholder=" " />
+    <label for="phone">Mobile Number</label>
+  </div>
+  <div class="floating-field">
+   <input type="text" name="fssai_number" placeholder="">
+    <label for="name">Fssai number</label>
+  </div>
+  <div class="floating-field">
+    <input type="text" name="state" id="state" required placeholder=" " />
+    <label for="state">State</label>
+  </div>
+  <div style="margin: 20px 0;">
+  <label style="font-size: 12px;">
+    <input type="checkbox" id="agreeCheckbox"/>
+    I have read and agree to the company’s Terms and Conditions, Disclaimer, and Refund Policy, and I consent to receive communications via phone calls, SMS, email, WhatsApp, and other channels.
+  </label>
+</div>
+
+
+  <div class="buttons" disabled>
+    <button type="submit" id="submitButton" disabled>Get Started</button>
+  </div>
+
+  </form>
+
+  <!-- Registration Form -->
+  <form id="registrationForm" class="form-box" method="POST" action="https://api.web3forms.com/submit">
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+  <input type="hidden" name="subject" value="New FSSAI Registration">
+
+  <h2 style="margin-bottom: 20px; font-weight: 800; text-align: center;">
+    Register Your <span style="color: #0077ff;">Food Business</span> & Get 
+    Legal FSSAI Certificate
+  </h2>
+
+
+  <!-- Name -->
+  <div class="floating-field">
+    <input type="text" name="name" id="name" required placeholder=" " />
+    <label for="name">Name</label>
+  </div>
+
+  <!-- Email -->
+  <div class="floating-field">
+    <input type="email" name="email" id="email" required placeholder=" " />
+    <label for="email">Email</label>
+  </div>
+
+  <!-- Phone -->
+  <div class="floating-field">
+    <input type="tel" name="phone" id="phone" required placeholder=" " />
+    <label for="phone">Mobile Number</label>
+  </div>
+
+  <!-- State -->
+  <div class="floating-field">
+    <input type="text" name="state" id="state" required placeholder=" " />
+    <label for="state">State</label>
+  </div>
+  <!-- Type of Service -->
+  <div class="floating-field">
+    <select name="business_type" id="businessType" required>
+      <option value="">-- Select --</option>
+      <option value="Importer">Importer</option>
+      <option value="Merchant-Exporter">Merchant-Exporter</option>
+      <option value="Wholesaler">Wholesaler</option>
+      <option value="Distributor">Distributor</option>
+      <option value="Retailer">Retailer</option>
+      <option value="Transporter">Transporter</option>
+      <option value="Storage-without-Atmospheric-Controller-Cold">Storage without Atmospheric Controller + Cold</option>
+      <option value="Food-Vending-Agencies">Food Vending Agencies</option>
+      <option value="Petty-Retailer-of-snacks/tea-shops">Petty Retailer of snacks/tea shops</option>
+      <option value="Hawker-(Itinerant / Mobile food vendor)">Hawker (Itinerant / Mobile food vendor)</option>
+      <option value="Direct-SellerSole-Proprietorship">Direct Seller Sole Proprietorship</option>
+      <option style="background-color: red; font-weight: 800;" value="Don't-know">Don't Know</option>
+    </select>
+    <label for="businessType">Kind Of Business</label>
+  </div>
+   <div style="margin: 20px 0;">
+  <label style="font-size: 12px;">
+    <input type="checkbox" id="agreeCheckbox"/>
+    I have read and agree to the company’s Terms and Conditions, Disclaimer, and Refund Policy, and I consent to receive communications via phone calls, SMS, email, WhatsApp, and other channels.
+  </label>
+</div>
+
+  <div class="buttons">
+    <button type="submit" id="submitButton" disabled>Get Started</button>
+  </div>
+</form>
+
+</div>
+
+
+   <main id="page-content">
+     <div class="container1 hero">
+        <div class="content">
+            <div style="font-size: 14px; color: gray; margin-bottom: 10px;">
+                <a href="index.html">Home</a> > <a href="fssai-registration.html">Licenses & Registrations</a> > FSSAI [Food License]
+            </div>
+            <h1>FSSAI Registration Online – Get Your Food License Easily & Legally</h1>
+    <p>
+      Ensure your food business is compliant with FSSAI regulations through a fast, transparent, and expert-driven
+      registration process — trusted by hundreds of food startups, restaurants, and manufacturers across India.
+    </p>
+<div class="flexxe">
+    <ul class="feature-list">
+  <li>
+   <img src="https://cdn-icons-png.flaticon.com/512/11545/11545460.png" alt="Confused Guidance Icon" width="32" />
+    <div>
+      <strong>Confused About the Right Food License? We’ll Guide You:</strong>
+      Whether you need a <a href="#basic" style="text-transform: uppercase; font-weight:700"> Basic</a>, <a href="#basic" style="text-transform: uppercase; font-weight:700"> State </a>, or <a href="#basic" style="text-transform: uppercase; font-weight:700"> Central </a>FSSAI License — our experts evaluate your business model and
+      turnover to recommend and apply for the correct license type.
+    </div>
+  </li>
+</ul>
+<ul class="feature-list">
+  <li>
+   <img  src="https://cdn-icons-png.flaticon.com/512/9422/9422893.png" alt="Expert Filing" width="32" />
+    <div>
+      <strong>100% Expert Filing, Fast Processing:</strong>
+      Get your application filed by professionals with all supporting documents, reducing errors and rejections.
+      We ensure smooth coordination with authorities to secure your license promptly.
+    </div>
+  </li>
+</ul>
+
+<ul class="feature-list">
+  <li>
+    <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Eligibility Icon" width="40" />
+    <div>
+      <strong>End-to-End Support – From New Applications to Modifications:</strong>
+      Need a renewal or want to upgrade your license due to business expansion? We handle modifications,
+      renewals, and follow-ups within 24 hours, without disrupting your operations.
+    </div>
+  </li>
+</ul>
+
+  </div>
+        </div>
+    </div>
+    <div class="tab-nav11">
+    <div class="tab-nav1" id="tabNav1">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#Fees">Fees/Charges</a>
+         <a href="#Documents">Documents</a>
+         <a href="#Benefits">Benefits</a>
+        <a href="#Process">Process</a>
+        <a href="#faq">FAQ's</a>
+    </div>
+  </div>
+<div class="page-layout">
+    <div class="main-content">
+   <section id="overview" class="gst-section">
+  <div class="container">
+    <h2>FSSAI Registration <span class="highlight">Overview</span></h2>
+    <p>
+      Every food business in India, whether a small vendor or a large manufacturer, must obtain FSSAI registration or license as mandated by the Food Safety and Standards Authority of India. 
+      This ensures that the food sold is safe, hygienic, and fit for consumption.
+    </p>
+
+    <p>
+      FSSAI registration is based on the size and nature of your business and is categorized into three types: <strong> <a href="#basic">Basic Registration,</a> <a href="#basic">State License</a>  and <a href="#basic">Central License</a></strong>. The process requires documentation, compliance with hygiene standards, and regular updates. Timely registration helps maintain public trust and avoids penalties.
+    </p>
+
+    <h3>What is FSSAI Registration?</h3>
+    <p>
+      FSSAI Registration is a 14-digit unique number issued to food businesses that confirms compliance with food safety standards. This number must be printed on food packaging and displayed at business premises. It is mandatory for all entities involved in the food supply chain, including manufacturing, processing, packaging, storage, distribution, and retail.
+    </p>
+  </div>
+</section>
+ <section id="Fees" class="gst-fees-section">
+  <div class="container">
+    <h2>FSSAI Registration & License<span class="highlight"> Charges</span></h2>
+    <p>
+      The cost of FSSAI Registration depends on the type of license applicable to your food business—Basic Registration, State License, or Central License. The government fee is fixed, while professional assistance charges may vary based on the services and complexity involved.
+    </p>
+
+    <div class="fees-table-scroll">
+      <table class="fees-table">
+        <thead>
+          <tr>
+            <th>Service Type</th>
+            <th>Description</th>
+            <th>Government Fees (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Basic Registration</td>
+            <td>Applicable to small food businesses with annual turnover up to ₹12 lakhs</td>
+            <td><strong>₹100/year</strong></td>
+          </tr>
+          <tr>
+            <td>State License</td>
+            <td>Mid-sized businesses with turnover between ₹12 lakhs and ₹20 crores</td>
+            <td><strong>₹2,000 – ₹5,000/year</strong></td>
+          </tr>
+          <tr>
+            <td>Central License</td>
+            <td>Large businesses, import/export units, or those operating in multiple states</td>
+            <td><strong>₹7,500/year</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+    <div class="note">
+      <p>💡 <strong>Note:</strong> All charges above are for professional services. Government filing remains free, but timely filing is essential to avoid penalties.</p>
+    </div>
+  </div>
+     <div id="basic" style="margin-top: 30px; padding:20px 10px;" class="benefit-cards">
+  <div style=" border:1px solid rgb(0, 0, 0)" class="card11">
+    <h2 style="color:#012f64; font-weight: 700;">Basic Registration</h2>
+    <p>
+      Ideal for small food businesses with turnover below ₹12 lakh. Get your license quickly and start operations legally.
+    </p>
+    <ul>
+      <li>Applicable for petty food manufacturers, hawkers, and small vendors</li>
+      <li>Simple documentation: Aadhaar, Photo, and Business Details</li>
+      <li>Usually processed within 3-5 working days</li>
+      <li>Renewal can be done easily online</li>
+    </ul>
+    <div style="text-align: center;">
+      <button type="submit">499/- Pay Now</button>
+    </div>
+  </div>
+
+  <div style=" border:1px solid rgb(0, 0, 0)" class="card11">
+    <h2 style="color:#012f64; font-weight: 700;">State Registration</h2>
+    <p>
+      Required for businesses with turnover between ₹12 lakh to ₹20 crore. We guide you through every step of the process.
+    </p>
+    <ul>
+      <li>Ideal for medium-sized food manufacturers, distributors, and restaurants</li>
+      <li>Requires proof of business ownership, address proof, and food safety management documents</li>
+      <li>Approval by State Licensing Authority</li>
+    </ul>
+    <div style="text-align: center;">
+      <button type="submit">3699/- Pay Now</button>
+    </div>
+  </div>
+
+  <div style=" border:1px solid rgb(0, 0, 0)" class="card11">
+    <h2 style="color:#012f64; font-weight: 700;">Central Registration</h2>
+    <p>
+      Mandatory for large-scale businesses or those operating in multiple states. Ensure nationwide compliance with expert help.
+    </p>
+    <ul>
+      <li>Compulsory for importers/exporters and interstate operators </li>
+      <li>E-Commerce Food Business operators </li>
+      <li>Company/Organization with the same name carrying out food business activities in more than one State  </li>
+      <li>Issued by the Central Licensing Authority (FSSAI HQ)</li>
+      <li>Enables brand credibility and trust across India</li>
+    </ul>
+    <div style="text-align: center;">
+      <button type="submit">4999/- Pay Now</button>
+    </div>
+  </div>
+</div>
+
+</section>
+ <section id="Documents" class="gst-docs-section">
+  <div class="container">
+    <h2><span class="highlight">Documents Required</span> for FSSAI Registration</h2>
+    <p>
+      The documents required for FSSAI Registration vary depending on the type of license (Basic, State, or Central) and the nature of your food business. Below is a list of commonly needed documents for a smooth registration process.
+    </p>
+
+    <div class="table-scroll-wrapper">
+      <table class="gst-docs-table">
+        <thead>
+          <tr>
+            <th>Document Category</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Applicant Identity Proof</td>
+            <td>
+              <ol>
+                <li>PAN Card of the Proprietor/Partner/Director</li>
+                <li>Aadhaar Card or Voter ID</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Business Address Proof</td>
+            <td>
+              <ol>
+                <li>Utility bill (electricity/water) or rent agreement for business premises</li>
+                <li>NOC from the landlord if rented property</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Business Constitution Proof</td>
+            <td>
+              <ol>
+                <li>Partnership deed / Incorporation Certificate / Shop Act License</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Passport Size Photograph</td>
+            <td>
+              <ol>
+                <li>Recent photo of the applicant (Proprietor/Partner/Director)</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Import Export Code (IEC)</td>
+            <td>
+              <ol>
+                <li>Required for businesses involved in import/export of food products (Central License only)</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Declaration Form</td>
+            <td>
+              <ol>
+                <li>Signed declaration ensuring compliance with FSSAI rules and hygiene standards</li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="Benefits" class="gst-benefits">
+  <h2><span class="highlight" style="color: #015fc9;">Benefits of Choosing</span> LicencesOnline for FSSAI Registration</h2>
+  <p class="subtitle">
+    From home kitchens to large-scale food businesses, LicencesOnline makes the FSSAI registration process smooth, accurate, and completely hassle-free. Here's why clients across India rely on us:
+  </p>
+
+  <div class="benefit-cards">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4222/4222735.png" alt="Expert Guidance" />
+      <h4>Expert License Consultation</h4>
+      <p>
+        Unsure whether you need a Basic, State, or Central License? Our experts assess your business model.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3503/3503789.png" alt="Accurate Filing" />
+      <h4>Error-Free Application Filing</h4>
+      <p>
+        We ensure your application is complete, correctly filed, and backed by all necessary documents.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3262/3262918.png" alt="Support Team" />
+      <h4>Dedicated Food License Support</h4>
+      <p>
+        Our support team assists with clarifications, notice responses, and follow-ups.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1995/1995704.png" alt="Renewals & Modifications" />
+      <h4>Renewals & Modifications</h4>
+      <p>
+        We help you with timely renewals and modifications of your license.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3523/3523885.png" alt="Fast Turnaround" />
+      <h4>Fast Turnaround Time</h4>
+      <p>
+        Get your registration certificate in just a few working days with our streamlined digital process and expert tracking.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" alt="Affordable Pricing" />
+      <h4>Affordable & Transparent Pricing</h4>
+      <p>
+        Choose a plan that fits your business stage. No hidden fees — just reliable service with complete clarity.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <section id="Process" class="gst-process-section">
+  <div class="container">
+    <h2><span class="highlight">Step-by-Step</span> FSSAI Registration Process</h2>
+    <p>
+      Getting your FSSAI registration or license is a straightforward process with the right guidance. Whether you’re a home kitchen or a large manufacturer, follow this simplified 3-step process to get your FSSAI certificate efficiently.
+    </p>
+
+    <div class="process-flow">
+      <div class="step">
+        <div class="step-icon blue"><i class="icon">📝</i></div>
+        <h4>Step 1</h4>
+        <p>Document Collection & License Type Selection</p>
+      </div>
+      <div class="arrow">➝</div>
+      <div class="step">
+        <div class="step-icon yellow"><i class="icon">🌐</i></div>
+        <h4>Step 2</h4>
+        <p>Application Filing on FoSCoS Portal</p>
+      </div>
+      <div class="arrow">➝</div>
+      <div class="step">
+        <div class="step-icon green"><i class="icon">📄</i></div>
+        <h4>Step 3</h4>
+        <p>Approval & Certificate Issuance</p>
+      </div>
+    </div>
+
+    <div id="detailed-process" class="detailed-steps">
+      <h3>Detailed Process:</h3>
+      <ol>
+        <li>
+          <strong>Document Preparation & Eligibility Check:</strong> We begin by assessing your business model to determine the correct license type (Basic, State, or Central). You'll need to submit identity/address proofs, business details, and other supporting documents.
+        </li>
+
+        <li>
+          <strong>Online Application Submission:</strong> Our team files your application through the official FoSCoS (Food Safety Compliance System) portal. We ensure all details are accurate and upload the documents per FSSAI requirements.
+        </li>
+
+        <li>
+          <strong>Verification & Approval:</strong> The FSSAI department reviews your application. If everything is in order, your license is approved and the certificate is issued digitally. If any clarification is needed, our team will assist in responding promptly to notices.
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+ <section id="faq" class="gst-faq-section">
+  <div class="container">
+    <div class="section-heading"><span class="highlight">FSSAI Registration</span> FAQs</div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">What is FSSAI registration?</h4>
+      <div class="section-text faq-answer">
+        FSSAI registration is a mandatory license issued by the Food Safety and Standards Authority of India to regulate the quality and safety of food products sold in India. It is required for all food-related businesses.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Who needs to apply for FSSAI registration or license?</h4>
+      <div class="section-text faq-answer">
+        Any individual or business involved in the manufacturing, processing, packaging, storage, distribution, or sale of food must obtain an FSSAI registration or license based on turnover and operational size.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">What are the types of FSSAI licenses?</h4>
+      <div class="section-text faq-answer">
+        There are three types: Basic Registration (for turnover up to ₹12 lakhs), State License (₹12 lakhs to ₹20 crores), and Central License (above ₹20 crores or inter-state/import-export businesses).
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">What documents are required for FSSAI registration?</h4>
+      <div class="section-text faq-answer">
+        Documents include identity/address proof, business registration proof, FSMS declaration, passport-size photo, and other supporting documents depending on the license type.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">How long does it take to get FSSAI registration?</h4>
+      <div class="section-text faq-answer">
+        It typically takes 3–7 working days for Basic Registration and up to 30 days for State or Central License, depending on the type of business and response from the authority.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Is FSSAI license mandatory for home-based food businesses?</h4>
+      <div class="section-text faq-answer">
+        Yes, even home-based food sellers and cloud kitchens must obtain FSSAI Basic Registration if their turnover is under ₹12 lakhs per annum.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Can I operate in multiple states with one FSSAI license?</h4>
+      <div class="section-text faq-answer">
+        No, for operations across multiple states, a Central License is required for the head office, and separate State Licenses are needed for each operational unit.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">How long is the FSSAI license valid?</h4>
+      <div class="section-text faq-answer">
+        FSSAI licenses are valid for 1 to 5 years, depending on what you choose at the time of application. Renewal should be done before expiry to avoid penalties.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Can I renew or modify my FSSAI license?</h4>
+      <div class="section-text faq-answer">
+        Yes, licenses can be renewed before expiry and modified in case of any changes in business details, such as address, contact info, or food category.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">What are the penalties for not having an FSSAI license?</h4>
+      <div class="section-text faq-answer">
+        Operating without a valid FSSAI license can result in a penalty of up to ₹5 lakhs and even imprisonment under the Food Safety and Standards Act, 2006.
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div class="tab-nav sticky-tabs" id="desktopTabs">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#Fees">Fees/Charges</a>
+         <a href="#Documents">Documents</a>
+         <a href="#Benefits">Benefits</a>
+        <a href="#Process">Process</a>
+        <a href="#faq">FAQ's</a>
+    </div>
+</div>
+
+   </main>
+
+
+
+     <footer>
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-9">
+                        <div class="mb-5">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-6 col-xl-7">
+                                    <div class="footer-item">
+                                        <a href="index.html" class="p-0">
+                                            <h3 class="text-white"><i class="fab fa-slack me-3"></i> licencesonline</h3>
+                                            <!-- <img src="img/logo.png" alt="Logo"> -->
+                                        </a>
+                                        <p class="text-white mb-4">Get Expert Help with Business Licenses & More
+Trusted experts in FSSAI, GST, IEC, MSME & business transformation</p>
+                                        <div class="footer-btn d-flex">
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i
+                                                    class="fab fa-twitter"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i
+                                                    class="fab fa-instagram"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-0" href="#"><i
+                                                    class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <div class="footer-item">
+                                        <h4 class="text-white mb-4">Useful Links</h4>
+                                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                                        <a href="index.html#features"><i class="fas fa-angle-right me-2"></i> Features</a>
+                                        <a href="index.html#faqs"><i class="fas fa-angle-right me-2"></i> FAQ's</a>
+                                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-5" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                            <div class="row g-0">
+                                <div class="col-12">
+                                    <div class="row g-4">
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Address</h4>
+                                                    <p class="mb-0">123 Street New York.USA</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fas fa-envelope fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Mail Us</h4>
+                                                    <p class="mb-0">care@licencesonline.in</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fa fa-phone-alt fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Telephone</h4>
+                                                    <p class="mb-0">(+012) 3456 7890</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Newsletter</h4>
+                            <p class="text-white mb-3">
+Subscribe to get the latest updates, legal tips & exclusive offers on business licenses.
+
+</p>
+                            <div class="position-relative rounded-pill mb-4">
+                                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Enter your email">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                            <div class="d-flex flex-shrink-0">
+                                <div class="footer-btn">
+                                    <a href="#" class="btn btn-lg-square rounded-circle position-relative wow tada"
+                                        data-wow-delay=".9s">
+                                        <i class="fa fa-phone-alt fa-2x"></i>
+                                        <div class="position-absolute" style="top: 2px; right: 12px;">
+                                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column ms-3 flex-shrink-0">
+                                    <span>Call to Our Experts</span>
+                                    <a href="tel:+ 0123 456 7890"><span class="text-white">Free: + 0123 456
+                                            7890</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="text-center">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i
+                                    class="fas fa-copyright text-light me-2"></i>licencesonline.in</a>, All right
+                            reserved.</span>
+                             <ul style="display: flex; justify-content:center; align-items:center; gap:25px; color:rgb(255, 255, 255)">
+                            <li><a style="color: rgb(255, 255, 255);" href="Refund-Policy.html">Refund Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="Privacy-Policy.html">Privacy Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="TermsandServices.html">Terms and Services</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+    </footer>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    function openForm(type) {
+      // Hide the card section
+      document.getElementById("cardSection").style.display = "none";
+
+      // Hide both forms initially
+      document.getElementById("renewalForm").style.display = "none";
+      document.getElementById("registrationForm").style.display = "none";
+
+      // Reset form-step visibility (for renewal)
+      document.querySelectorAll(".form-step").forEach(el => el.classList.remove("active"));
+
+      // Show the selected form
+      if (type === 'renewal') {
+        document.getElementById("renewalForm").style.display = "block";
+        document.getElementById("renewalStep1").classList.add("active");
+      } else {
+        document.getElementById("registrationForm").style.display = "block";
+      }
+    }
+
+    function nextStep(type, current) {
+      document.getElementById(type + "Step" + current).classList.remove("active");
+      document.getElementById(type + "Step" + (current + 1)).classList.add("active");
+    }
+
+    function prevStep(type, current) {
+      document.getElementById(type + "Step" + current).classList.remove("active");
+      document.getElementById(type + "Step" + (current - 1)).classList.add("active");
+    }
+
+    // Expose functions globally for inline onclick
+    window.openForm = openForm;
+    window.nextStep = nextStep;
+    window.prevStep = prevStep;
+    
+
+    // Handle form submissions (registration + renewal)
+    ["renewalForm", "registrationForm"].forEach(formId => {
+      const form = document.getElementById(formId);
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const fdata = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: fdata,
+          }).then((response) => {
+            if (response.ok) {
+              // Hide full card + form container
+              document.querySelector('.card-main-container').style.display = "none";
+
+              // Show actual page content
+              const pageContent = document.getElementById("page-content");
+              if (pageContent) {
+                pageContent.style.display = "block";
+
+                // For renewal: scroll to renewal-info block
+                if (formId === "renewalForm") {
+  // Redirect to another page with smooth transition delay (optional)
+  setTimeout(() => {
+    window.location.href = "/fssai-renewal.html"; // replace with your target page URL
+  }, 100);
+}
+
+              }
+
+              // Optional: reset form
+              form.reset();
+            } else {
+              alert("Form submission failed.");
+            }
+          }).catch((err) => {
+            console.error(err);
+            alert("Submission error.");
+          });
+        });
+      }
+    });
+    const checkbox = document.getElementById("agreeCheckbox");
+const submitButton = document.getElementById("submitButton");
+
+if (checkbox && submitButton) {
+  submitButton.disabled = true; // Force-disable on load
+
+  checkbox.addEventListener("change", function () {
+    submitButton.disabled = !this.checked;
+  });
+}
+  });
+</script>
+
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabContainer = document.getElementById("desktopTabs");
+    const navLinks = tabContainer.querySelectorAll("a");
+
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute("href").replace("#", "");
+      return document.getElementById(id);
+    });
+
+    function updateActiveTab() {
+      const scrollY = window.scrollY + 160;
+      let current = "";
+
+      for (let section of sections) {
+        if (!section) continue;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.id;
+          break;
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveTab);
+  });
+</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
