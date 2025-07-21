@@ -312,46 +312,6 @@ window.addEventListener("scroll", () => {
     tabNav.style.position = "sticky";
   }
 });
- document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("registrationForm");
-    const checkbox = document.getElementById("agreeCheckbox");
-    const submitButton = document.getElementById("submitButton");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const fdata = new FormData(form);
-
-      fetch(form.action, {
-        method: "POST",
-        body: fdata,
-      })
-        .then((response) => {
-          if (response.ok) {
-            form.style.display = "none";
-            const successSection = document.getElementById("page-content");
-            if (successSection) successSection.style.display = "block";
-
-            // ✅ Reset form and disable button again
-            form.reset();
-            submitButton.disabled = true;
-          } else {
-            alert("Form submission failed. Please try again.");
-          }
-        })
-        .catch((error) => {
-          console.error("Web3Forms error:", error);
-          alert("Something went wrong. Please try again.");
-        });
-    });
-
-   if (checkbox && submitButton) {
-  submitButton.disabled = true; // Force-disable on load
-
-  checkbox.addEventListener("change", function () {
-    submitButton.disabled = !this.checked;
-  });
-}
-  });
 
 
 
