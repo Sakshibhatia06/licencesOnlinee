@@ -338,14 +338,14 @@
   </div>
   <div style="margin: 20px 0;">
   <label style="font-size: 12px;">
-    <input type="checkbox" id="agreeCheckbox"/>
+    <input type="checkbox" id="agreeCheckboxRen"/>
     I have read and agree to the company’s Terms and Conditions, Disclaimer, and Refund Policy, and I consent to receive communications via phone calls, SMS, email, WhatsApp, and other channels.
   </label>
 </div>
 
 
   <div class="buttons" disabled>
-    <button type="submit" id="submitButton" disabled>Get Started</button>
+    <button type="submit" id="submitButtonRen" disabled>Get Started</button>
   </div>
 
   </form>
@@ -405,13 +405,13 @@
   </div>
    <div style="margin: 20px 0;">
   <label style="font-size: 12px;">
-    <input type="checkbox" id="agreeCheckbox"/>
+    <input type="checkbox" id="agreeCheckboxReg"/>
     I have read and agree to the company’s Terms and Conditions, Disclaimer, and Refund Policy, and I consent to receive communications via phone calls, SMS, email, WhatsApp, and other channels.
   </label>
 </div>
 
   <div class="buttons">
-    <button type="submit" id="submitButton">Get Started</button>
+    <button type="submit" id="submitButtonReg" disabled>Get Started</button>
   </div>
 </form>
 
@@ -996,20 +996,14 @@ Subscribe to get the latest updates, legal tips & exclusive offers on business l
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 <script>
-
   document.addEventListener("DOMContentLoaded", function () {
     function openForm(type) {
-      // Hide the card section
       document.getElementById("cardSection").style.display = "none";
-
-      // Hide both forms initially
       document.getElementById("renewalForm").style.display = "none";
       document.getElementById("registrationForm").style.display = "none";
 
-      // Reset form-step visibility (for renewal)
       document.querySelectorAll(".form-step").forEach(el => el.classList.remove("active"));
 
-      // Show the selected form
       if (type === 'renewal') {
         document.getElementById("renewalForm").style.display = "block";
         document.getElementById("renewalStep1").classList.add("active");
@@ -1028,68 +1022,77 @@ Subscribe to get the latest updates, legal tips & exclusive offers on business l
       document.getElementById(type + "Step" + (current - 1)).classList.add("active");
     }
 
-    // Expose functions globally for inline onclick
     window.openForm = openForm;
     window.nextStep = nextStep;
     window.prevStep = prevStep;
-    
 
-    // Handle form submissions (registration + renewal)
-    ["renewalForm", "registrationForm"].forEach(formId => {
-      const form = document.getElementById(formId);
-      if (form) {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const fdata = new FormData(form);
+    // ✅ Checkbox and Submit Button Logic for both forms
+    function toggleButton(checkboxId, buttonId) {
+      const checkbox = document.getElementById(checkboxId);
+      const button = document.getElementById(buttonId);
 
-          fetch(form.action, {
-            method: "POST",
-            body: fdata,
-          }).then((response) => {
-            if (response.ok) {
-              // Hide full card + form container
-              document.querySelector('.card-main-container').style.display = "none";
+      if (checkbox && button) {
+        button.disabled = true; // Disable by default
 
-              // Show actual page content
-              const pageContent = document.getElementById("page-content");
-              if (pageContent) {
-                pageContent.style.display = "block";
-
-                // For renewal: scroll to renewal-info block
-                if (formId === "renewalForm") {
-  // Redirect to another page with smooth transition delay (optional)
-  setTimeout(() => {
-    window.location.href = "/fssai-renewal.html"; // replace with your target page URL
-  }, 100);
-}
-
-              }
-
-              // Optional: reset form
-              form.reset();
-            } else {
-              alert("Form submission failed.");
-            }
-          }).catch((err) => {
-            console.error(err);
-            alert("Submission error.");
-          });
+        checkbox.addEventListener("change", function () {
+          button.disabled = !checkbox.checked;
         });
       }
+    }
+
+    // Apply to both forms
+    toggleButton("agreeCheckboxReg", "submitButtonReg");
+    toggleButton("agreeCheckboxRen", "submitButtonRen");
+
+    // ✅ Handle both form submissions
+    ["registrationForm", "renewalForm"].forEach(formId => {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const type = formId === "renewalForm" ? "Ren" : "Reg";
+        const checkbox = document.getElementById("agreeCheckbox" + type);
+        const submitButton = document.getElementById("submitButton" + type);
+
+        if (!checkbox.checked) {
+          alert("Please agree to the terms before submitting.");
+          return;
+        }
+
+        const fdata = new FormData(form);
+
+        fetch(form.action, {
+          method: "POST",
+          body: fdata,
+        }).then(response => {
+          if (response.ok) {
+            document.querySelector('.card-main-container').style.display = "none";
+            const pageContent = document.getElementById("page-content");
+            if (pageContent) {
+              pageContent.style.display = "block";
+
+              if (formId === "renewalForm") {
+                setTimeout(() => {
+                  window.location.href = "/fssai-renewal.html";
+                }, 100);
+              }
+            }
+
+            form.reset();
+            submitButton.disabled = true;
+          } else {
+            alert("Form submission failed.");
+          }
+        }).catch(err => {
+          console.error(err);
+          alert("Submission error.");
+        });
+      });
     });
-    const checkbox = document.getElementById("agreeCheckbox");
-const submitButton = document.getElementById("submitButton");
-
-if (checkbox && submitButton) {
-  submitButton.disabled = true; // Force-disable on load
-
-  checkbox.addEventListener("change", function () {
-    submitButton.disabled = !this.checked;
-  });
-}
   });
 </script>
-
  <script>
   document.addEventListener("DOMContentLoaded", function () {
     const tabContainer = document.getElementById("desktopTabs");
