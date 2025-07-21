@@ -119,7 +119,7 @@
           { label: "FSSAI [Food License]", link: "/fssai-registration.html" },
           { label: "IEC [Import/Export Code]", link: "/import-export-code.html" },
           { label: "Digital Signature Certificate", link: "/dsc-registration.html" },
-          { label: "Udyam Registration", link: "/UdyamRegistration.html" },
+          { label: "Udyam/MSME Registration", link: "/UdyamRegistration.html" },
           { label: "ISO Certification", link: "/ISOCertification.html" }
         ],
         "Web Development": [
