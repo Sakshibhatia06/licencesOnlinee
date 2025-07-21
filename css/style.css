@@ -2492,8 +2492,30 @@ margin-top: 20px;
 .call-button:hover {
   opacity: 0.9;
 }
+.fssai-icons{
+  display: flex; 
+  justify-content: center; 
+  gap: 30px; 
+  flex-wrap: wrap;
+  align-items: center;
+}
+.fssai-icon7 img{
+  width: 80px;
+}
 
     @media (max-width: 768px) {
+      .fssai-icons{
+  gap: 20px; 
+}
+.fssai-icon4{
+  margin-top: -70px;
+}
+.fssai-icon7{
+  margin-top: -60px;
+}
+.fssai-icon7 img{
+  width: 50px;
+}
       .call-button {
    display: flex;
   align-items: center;
