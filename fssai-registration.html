@@ -29,7 +29,48 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-    <style>
+      <style>
+  .benefit-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .card11 {
+    flex: 1 1 30%;
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card11 h2 {
+    color: #012f64;
+    font-weight: 700;
+  }
+
+  .card11 p,
+  .card11 ul {
+    margin-bottom: 15px;
+  }
+
+  .card11 ul {
+    padding-left: 18px;
+  }
+
+  .card11 .btn-container {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  .card11 button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
     .card-main-container{
       display: flex;
       justify-content: center;
@@ -180,10 +221,13 @@
     }
 
         @media (max-width: 768px) {
+          .card11 {
+      flex: 1 1 100%;
+    }
           .card-container{
             margin-top: 0px;
           }
-              .flexxe{
+          .flexxe{
   grid-template-columns: repeat(1,1fr);
 }
           .card-main-container {
@@ -347,7 +391,7 @@
 </div>
 
 
-  <div class="buttons" disabled>
+  <div class="buttons">
     <button type="submit" id="submitButtonRen" disabled>Get Started</button>
   </div>
 
@@ -408,13 +452,13 @@
   </div>
    <div style="margin: 20px 0;">
   <label style="font-size: 12px;">
-    <input type="checkbox" id="agreeCheckboxReg"/>
+    <input  id="agreeCheckboxReg" type="checkbox"/>
     I have read and agree to the company’s Terms and Conditions, Disclaimer, and Refund Policy, and I consent to receive communications via phone calls, SMS, email, WhatsApp, and other channels.
   </label>
 </div>
 
   <div class="buttons">
-    <button type="submit" id="submitButtonReg" disabled>Get Started</button>
+    <button id="submitButtonReg" type="submit" disabled>Get Started</button>
   </div>
 </form>
 
@@ -549,8 +593,10 @@
       <li>Simple documentation: Aadhaar, Photo, and Business Details</li>
       <li>Usually processed within 3-5 working days</li>
       <li>Renewal can be done easily online</li>
+      <li>Essential for home-based food businesses and tiffin services</li>
+<li>Compliance with FSSAI norms builds customer trust and credibility</li>
     </ul>
-    <div style="text-align: center;">
+    <div class="btn-container" style="text-align: center;">
       <button type="submit">499/- Pay Now</button>
     </div>
   </div>
@@ -562,10 +608,14 @@
     </p>
     <ul>
       <li>Ideal for medium-sized food manufacturers, distributors, and restaurants</li>
-      <li>Requires proof of business ownership, address proof, and food safety management documents</li>
-      <li>Approval by State Licensing Authority</li>
+<li>Requires proof of business ownership, address proof.</li>
+<li>Requires proof of food safety management documents.</li>
+<li>Approval by State Licensing Authority</li>
+<li>Annual turnover should be more than ₹12 Lakhs and up to ₹20 Crores.</li>
+
+
     </ul>
-    <div style="text-align: center;">
+    <div class="btn-container" style="text-align: center;">
       <button type="submit">3699/- Pay Now</button>
     </div>
   </div>
@@ -582,7 +632,7 @@
       <li>Issued by the Central Licensing Authority (FSSAI HQ)</li>
       <li>Enables brand credibility and trust across India</li>
     </ul>
-    <div style="text-align: center;">
+    <div class="btn-container" style="text-align: center;">
       <button type="submit">4999/- Pay Now</button>
     </div>
   </div>
@@ -1096,6 +1146,7 @@ Subscribe to get the latest updates, legal tips & exclusive offers on business l
     });
   });
 </script>
+
  <script>
   document.addEventListener("DOMContentLoaded", function () {
     const tabContainer = document.getElementById("desktopTabs");
