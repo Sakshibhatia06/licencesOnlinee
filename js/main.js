@@ -128,7 +128,7 @@
         ],
          "Sale and registration on Amazon / Flipkart": [
           { label: "Sale and registration on Amazon", link: "/Sales-RegistrationAmazon.html" },
-          { label: "Sale and registration on Flipkart", link: "/Sales-RegistrationFlipkart.html" },
+          { label: "Sale and registration on Flipkart", link: "/Sales-RegistrationFilpkart.html" },
         ],
       },
       tax: {
