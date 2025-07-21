@@ -31,111 +31,125 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    .nav-bar {
-      box-shadow: 0px 6px 13px 2px #dcdcdc;
-      position: sticky;
-      top: 0px;
-      left: 0px;
-      z-index: 1000;
-    }
-
-    .container1 {
-      max-width: 1280px;
-      margin: auto;
-      padding: 40px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .content {
-      flex: 1 1 60%;
-    }
-
     .form-box {
-      flex: 1 1 30%;
-      background: #fff;
-      height: 350px;
-      padding: 20px;
+      background: white;
+      width: 600px;
+      padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 100px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: none;
     }
 
-    .form-box h3 {
-      margin-bottom: 20px;
-      font-size: 20px;
-      text-align: center;
+    .form-step {
+      display: none;
     }
 
-    .form-box input {
-      width: 100%;
+    .form-step.active {
+      display: block;
+    }
+
+    .form-step input,
+    .form-step select {
       padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 6px;
+      margin: 10px 0;
       border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      gap: 10px;
+      text-align: right;
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-step h3 {
+      font-size: 30px;
+      font-weight: 800;
     }
 
     .form-box button {
-      width: 100%;
-      padding: 12px;
-      background-color: #ffcc00;
-      color: #000;
+      padding: 10px 20px;
+      background: #0077ff;
+      color: white;
       border: none;
-      font-weight: bold;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
+      margin-left: 10px;
     }
 
-    .hero h1 {
-      font-size: 40px;
-      font-weight: 900;
-      margin-bottom: 25px;
+    .form-box button:hover {
+      background: #0668d7;
     }
 
-    .hero ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .hero ul li {
-      margin-bottom: 15px;
-      padding-left: 25px;
+    .floating-field {
       position: relative;
+      margin-bottom: 10px;
     }
 
-    .hero ul li::before {
-      content: "✔";
+    .floating-field input {
+      width: 100%;
+      padding: 18px 12px 6px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: white;
+      outline: none;
+    }
+
+    .floating-field label {
+      color: #0077ff;
       position: absolute;
-      left: 0;
-      color: #015fc9;
+      left: 12px;
+      padding: 0 6px;
+      background: white;
+      font-size: 13px;
+      pointer-events: none;
     }
 
-    .tab-nav {
-      display: flex;
+    /* Force label to always float */
+    .floating-field.always-floating label {
+      top: 10px;
+      font-size: 11px;
+      color: #0077ff;
+    }
+
+    .flexxe {
+      display: grid;
       gap: 20px;
-      padding: 20px;
-      background: #e9f2ff;
-      border-radius: 10px 10px 0 0;
-      position: sticky;
-      top: 70px;
-      z-index: 1001;
-      overflow-x: auto;
+      grid-template-columns: repeat(3, 3fr);
     }
 
-    .tab-nav a {
-      font-weight: 600;
-      color: #222;
-      padding-bottom: 5px;
+    .main-form-section {
+      background: linear-gradient(135deg, #eaf6ff, #faf6f6);
     }
 
-    .tab-nav a.active {
-      border-bottom: 2px solid #007bff;
-      color: #015fc9;
+
+    #page-content {
+      display: none;
+    }
+    .tab-nav.sticky-tabs {
+          height: 630px !important;
     }
 
     @media (max-width: 768px) {
+      .card-main-container {
+        height: 600px;
+      }
+
+      .form-box {
+        width: 350px;
+      }
+
+      .form-step.active {
+        margin-top: 40px;
+      }
+
+      .card1 {
+        width: 330px;
+        height: 200px;
+      }
+
       .container1 {
         flex-direction: column;
       }
@@ -143,11 +157,6 @@
       .form-box {
         position: static;
         top: unset;
-      }
-
-      .tab-nav {
-        flex-wrap: nowrap;
-        overflow-x: auto;
       }
     }
   </style>
@@ -165,7 +174,7 @@
           <div class="nav-center" id="navCenter">
             <div class="nav-item" data-flyout="business">Business Setup</div>
             <div class="nav-item" data-flyout="tax">Tax & Compliance</div>
-            <div class="nav-item" data-flyout="others">Others</div>
+              <div class="nav-item" data-flyout="others">About Us</div>
           </div>
           <div class="hamburger" onclick="toggleMobile()">☰</div>
         </div>
@@ -196,685 +205,724 @@
       </nav>
     </div>
   </div>
+  <div id="main-form-section" class="main-form-section">
+    <section id="form-section">
+      <form id="multiStepForm" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <input type="hidden" name="subject" value="New Business Lead" />
+        <input type="hidden" name="redirect" value="" />
 
-  <div class="container1 hero">
-    <div class="content">
-      <div style="font-size: 14px; color: gray; margin-bottom: 10px;">
-        <a href="index.html">Home</a> > <a href="GstRegistration.html">GST and Other Indirect Tax</a> > GST Registration
-      </div>
-      <h1>GST Registration Online – Documents, Requirements, Procedure </h1>
-      <p>A fast, simple, and affordable way to get your GST Registration done online — with complete expert support and
-        compliance tracking.</p>
-      <ul>
-        <li><strong>Quick GST Application Filing:</strong>
-          Fast-track your GST registration process with our expert filing service — ensuring minimal delays and accurate
-          application submission.</li>
-        <li><strong>End-to-End Online Process with Status Tracking:</strong> From filling your application to resolving
-          GST officer queries, we handle everything. Get real-time status updates and expert help to resolve notices or
-          clarifications.</li>
-        <li><strong>Tailored GST Services for All Business Types:</strong> Whether you're a: Small business owner,
-          Startup or freelancer, eCommerce seller, Government contractor or professional.
-          <br />We offer custom GST solutions suited to your business model.
-        </li>
-        <li><strong> Comprehensive Compliance Services:</strong> We don’t just help with registration. Our CA-assisted
-          GST services include: Online document verification and submission, GST return filing (GSTR-1, GSTR-3B, etc.),
-          GSTIN procurement and authentication, Application amendments, revocation, and migration</li>
-      </ul>
-    </div>
+        <!-- Step 1 -->
+        <div class="form-step active" id="step1">
+          <h2 style="margin-bottom: 20px; text-align:center">Select Type Of <span style="color: #0077ff;">Service
+            </span></h2>
+          <select name="business_type" id="businessType" required>
+            <option value="">-- Select --</option>
+            <option value="Importer">Importer</option>
+            <option value="Merchant-Exporter">Merchant-Exporter</option>
+            <option value="Wholesaler">Wholesaler</option>
+            <option value="Distributor">Distributor</option>
+            <option value="Retailer">Retailer</option>
+            <option value="Transporter">Transporter</option>
+            <option value="Storage-without-Atmospheric-Controller-Cold">Storage without Atmospheric Controller + Cold
+            </option>
+            <option value="Food-Vending-Agencies">Food Vending Agencies</option>
+            <option value="Petty-Retailer-of-snacks/tea-shops">Petty Retailer of snacks/tea shops</option>
+            <option value="Hawker-(Itinerant / Mobile food vendor)">Hawker (Itinerant / Mobile food vendor)</option>
+            <option value="Direct-SellerSole-Proprietorship">Direct SellerSole Proprietorship</option>
+            <option style="background-color: red; font-weight:800" value="Don't-know">Don't Know</option>
+          </select>
+          <div class="buttons">
+            <button type="button" onclick="nextStep(1)">Next</button>
+          </div>
+        </div>
 
-    <div class="form-box">
-      <h3>Register Your Company Today</h3>
-      <input type="email" placeholder="Email">
-      <input type="tel" placeholder="Mobile Number">
-      <input type="text" placeholder="City/Pincode">
-      <button>Get Started</button>
-    </div>
+        <!-- Step 2 -->
+        <div class="form-step" id="step2">
+          <h2 style="font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 20px;">
+            <span style="color:#0077ff;">Register for GST Today</span> & Unlock
+            <span style="color:#00b14f;">Tax Benefits, Legal Protection</span> & Credibility
+
+          </h2>
+
+          <div class="floating-field">
+            <input type="text" name="name" id="name" required placeholder=" " />
+            <label for="name">Your Name</label>
+          </div>
+
+          <div class="floating-field">
+            <input type="email" name="email" id="email" required placeholder=" " />
+            <label for="email">Your Email</label>
+          </div>
+
+          <div class="floating-field">
+            <input type="tel" name="phone" id="phone" required placeholder=" " />
+            <label for="phone">Mobile Number</label>
+          </div>
+          <div class="buttons">
+            <button type="button" onclick="prevStep(2)">Back</button>
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </section>
   </div>
-
-  <div class="tab-nav" id="tabNav">
-    <a href="#overview" class="active">Overview</a>
-    <a href="#Threshold">Threshold Limits</a>
-    <a href="#Turnover">Turnover Limits</a>
-    <a href="#Benefits">Benefits</a>
-    <a href="#Types">Types</a>
-    <a href="#Documents">Documents</a>
-    <a href="#Fees">Fees</a>
-    <a href="#Process">Process</a>
-    <a href="#GSTIN">GSTIN</a>
-    <a href="#GSTCertificate">GST Certificate</a>
-    <a href="#Penalties">Penalties</a>
-    <a href="#faq">FAQ's</a>
-  </div>
-
-  <section id="overview" class="gst-section">
-    <div class="container">
-      <h2>What is GST (Goods and Services Tax)?</h2>
-      <p><strong>GST (Goods and Services Tax)</strong> is a comprehensive indirect tax system implemented in India on
-        <strong>July 1, 2017</strong>, replacing multiple cascading taxes imposed by the central and state governments.
-      </p>
-      <p>It is a <strong>single tax</strong> levied on the supply of goods and services across all stages of the supply
-        chain, from manufacturer to consumer. GST aims to create a <strong>unified, transparent, and efficient</strong>
-        tax regime.</p>
-
-      <h3>Key Features of GST:</h3>
-      <ul>
-        <li>One Nation, One Tax – Unified tax system across India</li>
-        <li>Multi-stage, destination-based tax</li>
-        <li>Applicable to goods, services, imports, and exports</li>
-        <li>Types:
-          <ul>
-            <li><strong>CGST</strong> – Central GST</li>
-            <li><strong>SGST</strong> – State GST</li>
-            <li><strong>IGST</strong> – Integrated GST (for inter-state supply)</li>
+  <main id="page-content">
+    <div class="container1 hero">
+      <div class="content">
+        <div style="font-size: 14px; color: gray; margin-bottom: 10px;">
+          <a href="index.html">Home</a> > <a href="GstRegistration.html">GST and Other Indirect Tax</a> > GST
+          Registration
+        </div>
+        <h1>GST Registration Online – Documents, Requirements, Procedure </h1>
+        <p>A fast, simple, and affordable way to get your GST Registration done online — with complete expert support
+          and
+          compliance tracking.</p>
+        <div class="flexxe">
+          <ul class="feature-list">
+            <li>
+              <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" alt="Fast Filing Icon" width="32" />
+              <div>
+                <strong>Quick GST Application Filing:</strong>
+                Fast-track your GST registration process with our expert filing service — ensuring minimal delays and
+                accurate application submission.
+              </div>
+            </li>
           </ul>
-        </li>
-      </ul>
+          <ul class="feature-list">
+            <li>
+              <img src="https://cdn-icons-png.flaticon.com/512/484/484167.png" alt="Tracking Icon" width="32" />
+              <div>
+                <strong>End-to-End Online Process with Status Tracking:</strong>
+                From filling your application to resolving GST officer queries, we handle everything. Get real-time
+                status updates and expert help to resolve notices or clarifications.
+              </div>
+            </li>
+          </ul>
+          <ul class="feature-list">
+            <li>
+              <img src="https://cdn-icons-png.flaticon.com/512/891/891419.png" alt="Business Types Icon" width="32" />
+              <div>
+                <strong>Tailored GST Services for All Business Types:</strong>
+                Whether you're a: Small business owner, Startup or freelancer, eCommerce seller, Government contractor
+                or professional.<br />
+                We offer custom GST solutions suited to your business model.
+              </div>
+            </li>
+          </ul>
 
-      <hr>
-
-      <h2>What is GST Registration?</h2>
-      <p><strong>GST Registration</strong> is the official process of enrolling your business under the GST law. Upon
-        successful registration, a business is issued a <strong>GSTIN (Goods and Services Tax Identification
-          Number)</strong>.</p>
-
-      <h3>Who Needs GST Registration?</h3>
-      <ul>
-        <li>Businesses with turnover above ₹40 lakhs (goods) / ₹20 lakhs (services)</li>
-        <li>Inter-state suppliers of goods/services</li>
-        <li>eCommerce sellers and marketplace vendors</li>
-        <li>Casual taxable persons or non-resident suppliers</li>
-        <li>TDS deductors and input service distributors (ISDs)</li>
-      </ul>
-
-      <h3>Why GST Registration is Important:</h3>
-      <ul>
-        <li>Legalizes your business under GST law</li>
-        <li>Allows collection of GST from customers</li>
-        <li>Enables Input Tax Credit (ITC) claims</li>
-        <li>Mandatory for online sellers and inter-state suppliers</li>
-        <li>Boosts business credibility and transparency</li>
-      </ul>
-
-      <h3>After Registration:</h3>
-      <ul>
-        <li>Receive a 15-digit <strong>GSTIN</strong></li>
-        <li>File monthly, quarterly, or annual GST returns</li>
-        <li>Download your GST certificate from the portal</li>
-        <li>Comply with invoicing and record-keeping regulations</li>
-      </ul>
-    </div>
-  </section>
-  <section id="Threshold" class="threshold-section">
-    <div class="container">
-      <h2>GST Registration <span class="highlight">Threshold Limits</span></h2>
-      <p>
-        Eligibility to register for GST online must be verified before registration.
-        Individuals registered under the Pre-GST law should also opt for <strong>online GST registration</strong>.
-        It is mandatory for businesses that have a turnover of ₹40 lakhs for the sale of goods in normal category states
-        and ₹20 lakhs for the sale of goods in special category states. A company must register as a regular taxable
-        entity under GST law if
-        its annual threshold limit exceeds ₹40 lakhs. The GST council recommends GST rates, tax exemptions, and other
-        tax-related policies.
-        Here is a complete outline for the same.
-      </p>
-
-      <!-- Table -->
-      <div class="table-wrapper">
-        <table class="gst-table">
-          <thead>
-            <tr>
-              <th>Aggregate Turnover</th>
-              <th>Registration Required</th>
-              <th>Applicability</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="group-heading">
-              <td colspan="3">Earlier Limits for Sale of Goods/Providing Services</td>
-            </tr>
-            <tr>
-              <td>Exceeds ₹20 lakh</td>
-              <td>Yes – For Normal Category States</td>
-              <td>Up to 31 March 2019</td>
-            </tr>
-            <tr>
-              <td>Exceeds ₹10 lakh</td>
-              <td>Yes – For Special Category States</td>
-              <td>Up to 31 March 2019</td>
-            </tr>
-
-            <tr class="group-heading">
-              <td colspan="3">New Limits for Sale of Goods</td>
-            </tr>
-            <tr>
-              <td>Exceeds ₹40 lakh</td>
-              <td>Yes – For Normal Category States</td>
-              <td>From 1 April 2019</td>
-            </tr>
-            <tr>
-              <td>Exceeds ₹20 lakh</td>
-              <td>Yes – For Special Category States</td>
-              <td>From 1 April 2019</td>
-            </tr>
-          </tbody>
-        </table>
+        </div>
       </div>
     </div>
-  </section>
-  <section id="Turnover" class="turnover-section">
-    <div class="container">
-      <h2>GST Registration <span class="highlight">Turnover Limits</span></h2>
-      <p>
-        Turnover under GST refers to the **aggregate value of all taxable and non-taxable supplies, exports, and
-        inter-state supplies** made by a person with the same PAN. These limits determine whether a business must
-        mandatorily register under GST.
-        The limits vary based on the nature of supply — whether goods or services — and the state in which the business
-        operates.
-      </p>
-
-      <div class="table-wrapper">
-        <table class="gst-table">
-          <thead>
-            <tr>
-              <th>Business Type</th>
-              <th>Turnover Limit</th>
-              <th>Registration Required</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="group-heading">
-              <td colspan="3">For Supply of Goods</td>
-            </tr>
-            <tr>
-              <td>In Normal Category States</td>
-              <td>Exceeds ₹40 lakhs</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>In Special Category States</td>
-              <td>Exceeds ₹20 lakhs</td>
-              <td>Yes</td>
-            </tr>
-
-            <tr class="group-heading">
-              <td colspan="3">For Supply of Services</td>
-            </tr>
-            <tr>
-              <td>In Normal Category States</td>
-              <td>Exceeds ₹20 lakhs</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>In Special Category States</td>
-              <td>Exceeds ₹10 lakhs</td>
-              <td>Yes</td>
-            </tr>
-
-            <tr class="group-heading">
-              <td colspan="3">For Inter-State or E-Commerce Supply</td>
-            </tr>
-            <tr>
-              <td>Any Supplier (Goods or Services)</td>
-              <td>₹1 (No minimum threshold)</td>
-              <td>Mandatory</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="tab-nav11">
+      <div class="tab-nav1" id="tabNav1">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#Threshold">Threshold Limits</a>
+        <a href="#Benefits">Benefits</a>
+        <a href="#Types">Types</a>
+        <a href="#Documents">Documents</a>
+        <a href="#Fees">Fees</a>
+        <a href="#Process">Process</a>
+        <a href="#GSTCertificate">GST Certificate</a>
+        <a href="#Penalties">Penalties</a>
+        <a href="#faq">FAQ's</a>
       </div>
     </div>
-  </section>
-  <section id="Benefits" class="gst-benefits">
-    <h2><span class="highlight">Benefits of Registering</span> for GST</h2>
-    <p class="subtitle">
-      Registration under GST is an important step towards a unified tax system in India.
-      It offers many advantages to registered businesses. A taxpayer who registers under
-      the GST Act of 2017 will receive the following benefits:
-    </p>
+    <div class="page-layout">
+      <div class="main-content">
+        <section id="overview" class="gst-section">
+          <div class="container">
+            <h2>What is GST (Goods and Services Tax)?</h2>
+            <p><strong>GST (Goods and Services Tax)</strong> is a comprehensive indirect tax system implemented in India
+              on
+              <strong>July 1, 2017</strong>, replacing multiple cascading taxes imposed by the central and state
+              governments.
+            </p>
+            <p>It is a <strong>single tax</strong> levied on the supply of goods and services across all stages of the
+              supply
+              chain, from manufacturer to consumer. GST aims to create a <strong>unified, transparent, and
+                efficient</strong>
+              tax regime.</p>
 
-    <div class="benefit-cards">
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/681/681392.png" alt="Legal Recognition" />
-        <h4>Legal Recognition</h4>
-        <p>
-          A firm can obtain legal recognition as a supplier of goods or services by registering for GST.
-        </p>
-      </div>
+            <h3>Key Features of GST:</h3>
+            <ul>
+              <li>One Nation, One Tax – Unified tax system across India</li>
+              <li>Multi-stage, destination-based tax</li>
+              <li>Applicable to goods, services, imports, and exports</li>
+              <li>Types:
+                <ul>
+                  <li><strong>CGST</strong> – Central GST</li>
+                  <li><strong>SGST</strong> – State GST</li>
+                  <li><strong>IGST</strong> – Integrated GST (for inter-state supply)</li>
+                </ul>
+              </li>
+            </ul>
 
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Input Tax Credit" />
-        <h4>Input Tax Credit (ITC)</h4>
-        <p>
-          Claim credit on input tax paid on purchases to reduce overall tax liability.
-        </p>
-      </div>
+            <hr>
 
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2917/2917242.png" alt="Simplified Process" />
-        <h4>Simplified Process</h4>
-        <p>
-          Reduced complexity and faster compliance through a unified tax filing system.
-        </p>
-      </div>
+            <h2>What is GST Registration?</h2>
+            <p><strong>GST Registration</strong> is the official process of enrolling your business under the GST law.
+              Upon
+              successful registration, a business is issued a <strong>GSTIN (Goods and Services Tax Identification
+                Number)</strong>.</p>
 
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Interstate Sales" />
-        <h4>Interstate Sales</h4>
-        <p>
-          Registered businesses can freely operate and sell across state borders in India.
-        </p>
-      </div>
+            <h3>Who Needs GST Registration?</h3>
+            <ul>
+              <li>Businesses with turnover above ₹40 lakhs (goods) / ₹20 lakhs (services)</li>
+              <li>Inter-state suppliers of goods/services</li>
+              <li>eCommerce sellers and marketplace vendors</li>
+              <li>Casual taxable persons or non-resident suppliers</li>
+              <li>TDS deductors and input service distributors (ISDs)</li>
+            </ul>
 
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/4149/4149625.png" alt="Competitive Advantage" />
-        <h4>Competitive Advantage</h4>
-        <p>
-          GST registration boosts credibility and trust with customers and vendors.
-        </p>
-      </div>
+            <h3>Why GST Registration is Important:</h3>
+            <ul>
+              <li>Legalizes your business under GST law</li>
+              <li>Allows collection of GST from customers</li>
+              <li>Enables Input Tax Credit (ITC) claims</li>
+              <li>Mandatory for online sellers and inter-state suppliers</li>
+              <li>Boosts business credibility and transparency</li>
+            </ul>
 
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3141/3141485.png" alt="Compliance Rating" />
-        <h4>Better Compliance Rating</h4>
-        <p>
-          Regular and timely GST filing improves your compliance score with authorities.
-        </p>
-      </div>
-    </div>
-  </section>
+            <h3>After Registration:</h3>
+            <ul>
+              <li>Receive a 15-digit <strong>GSTIN</strong></li>
+              <li>File monthly, quarterly, or annual GST returns</li>
+              <li>Download your GST certificate from the portal</li>
+              <li>Comply with invoicing and record-keeping regulations</li>
+            </ul>
+          </div>
+        </section>
+        <section id="Threshold" class="threshold-section">
+          <div class="container">
+            <h2>GST Registration <span class="highlight">Threshold Limits</span></h2>
+            <p>
+              Eligibility to register for GST online must be verified before registration.
+              Individuals registered under the Pre-GST law should also opt for <strong>online GST registration</strong>.
+              It is mandatory for businesses that have a turnover of ₹40 lakhs for the sale of goods in normal category
+              states
+              and ₹20 lakhs for the sale of goods in special category states. A company must register as a regular
+              taxable
+              entity under GST law if
+              its annual threshold limit exceeds ₹40 lakhs. The GST council recommends GST rates, tax exemptions, and
+              other
+              tax-related policies.
+              Here is a complete outline for the same.
+            </p>
 
-  <section id="Types" class="gst-types-section">
-    <div class="container">
-      <h2>Types of <span class="highlight">GST Registration</span></h2>
-      <p>
-        The type of GST registration depends on the nature and size of your business. Based on your supply pattern,
-        turnover, or business presence, you can choose the appropriate GST registration category listed below.
-      </p>
+            <!-- Table -->
+            <div class="table-wrapper">
+              <table class="gst-table">
+                <thead>
+                  <tr>
+                    <th>Aggregate Turnover</th>
+                    <th>Registration Required</th>
+                    <th>Applicability</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="group-heading">
+                    <td colspan="3">Earlier Limits for Sale of Goods/Providing Services</td>
+                  </tr>
+                  <tr>
+                    <td>Exceeds ₹20 lakh</td>
+                    <td>Yes – For Normal Category States</td>
+                    <td>Up to 31 March 2019</td>
+                  </tr>
+                  <tr>
+                    <td>Exceeds ₹10 lakh</td>
+                    <td>Yes – For Special Category States</td>
+                    <td>Up to 31 March 2019</td>
+                  </tr>
 
-      <div class="types-grid">
-        <div class="type-card">
-          <h3>1. Regular Taxpayer</h3>
-          <p>Default option for businesses that exceed the threshold limit. Must file monthly/quarterly returns and
-            maintain full compliance.</p>
-        </div>
-
-        <div class="type-card">
-          <h3>2. Composition Scheme</h3>
-          <p>For small businesses with turnover up to ₹1.5 crore. Lower tax rates, reduced compliance, but no input tax
-            credit allowed.</p>
-        </div>
-
-        <div class="type-card">
-          <h3>3. Casual Taxable Person</h3>
-          <p>For businesses operating temporarily in another state (e.g., at trade shows or exhibitions). Requires
-            advance tax payment.</p>
-        </div>
-
-        <div class="type-card">
-          <h3>4. Non-Resident Taxable Person</h3>
-          <p>For individuals or businesses based outside India but supplying goods/services within India. Registration
-            is mandatory.</p>
-        </div>
-
-        <div class="type-card">
-          <h3>5. E-Commerce Operator</h3>
-          <p>Compulsory for those running eCommerce platforms or aggregators. Includes marketplaces like Amazon,
-            Flipkart, etc.</p>
-        </div>
-
-        <div class="type-card">
-          <h3>6. TDS/TCS Deductor</h3>
-          <p>Government departments or eCommerce platforms deducting tax at source must register under this category.
+                  <tr class="group-heading">
+                    <td colspan="3">New Limits for Sale of Goods</td>
+                  </tr>
+                  <tr>
+                    <td>Exceeds ₹40 lakh</td>
+                    <td>Yes – For Normal Category States</td>
+                    <td>From 1 April 2019</td>
+                  </tr>
+                  <tr>
+                    <td>Exceeds ₹20 lakh</td>
+                    <td>Yes – For Special Category States</td>
+                    <td>From 1 April 2019</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section id="Benefits" class="gst-benefits">
+          <h2><span class="highlight">Benefits of Registering</span> for GST</h2>
+          <p class="subtitle">
+            Registration under GST is an important step towards a unified tax system in India.
+            It offers many advantages to registered businesses. A taxpayer who registers under
+            the GST Act of 2017 will receive the following benefits:
           </p>
-        </div>
+
+          <div class="benefit-cards">
+            <div class="card">
+              <img src="https://cdn-icons-png.flaticon.com/512/681/681392.png" alt="Legal Recognition" />
+              <h4>Legal Recognition</h4>
+              <p>
+                A firm can obtain legal recognition as a supplier of goods or services by registering for GST.
+              </p>
+            </div>
+
+            <div class="card">
+              <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Input Tax Credit" />
+              <h4>Input Tax Credit (ITC)</h4>
+              <p>
+                Claim credit on input tax paid on purchases to reduce overall tax liability.
+              </p>
+            </div>
+
+            <div class="card">
+              <img src="https://cdn-icons-png.flaticon.com/512/2917/2917242.png" alt="Simplified Process" />
+              <h4>Simplified Process</h4>
+              <p>
+                Reduced complexity and faster compliance through a unified tax filing system.
+              </p>
+            </div>
+
+            <div class="card">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Interstate Sales" />
+              <h4>Interstate Sales</h4>
+              <p>
+                Registered businesses can freely operate and sell across state borders in India.
+              </p>
+            </div>
+
+            <div class="card">
+              <img src="https://cdn-icons-png.flaticon.com/512/4149/4149625.png" alt="Competitive Advantage" />
+              <h4>Competitive Advantage</h4>
+              <p>
+                GST registration boosts credibility and trust with customers and vendors.
+              </p>
+            </div>
+
+            <div class="card">
+              <img src="https://cdn-icons-png.flaticon.com/512/3141/3141485.png" alt="Compliance Rating" />
+              <h4>Better Compliance Rating</h4>
+              <p>
+                Regular and timely GST filing improves your compliance score with authorities.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="Types" class="gst-types-section">
+          <div class="container">
+            <h2>Types of <span class="highlight">GST Registration</span></h2>
+            <p>
+              The type of GST registration depends on the nature and size of your business. Based on your supply
+              pattern,
+              turnover, or business presence, you can choose the appropriate GST registration category listed below.
+            </p>
+
+            <div class="types-grid">
+              <div class="type-card">
+                <h3>1. Regular Taxpayer</h3>
+                <p>Default option for businesses that exceed the threshold limit. Must file monthly/quarterly returns
+                  and
+                  maintain full compliance.</p>
+              </div>
+
+              <div class="type-card">
+                <h3>2. Composition Scheme</h3>
+                <p>For small businesses with turnover up to ₹1.5 crore. Lower tax rates, reduced compliance, but no
+                  input tax
+                  credit allowed.</p>
+              </div>
+
+              <div class="type-card">
+                <h3>3. Casual Taxable Person</h3>
+                <p>For businesses operating temporarily in another state (e.g., at trade shows or exhibitions). Requires
+                  advance tax payment.</p>
+              </div>
+
+              <div class="type-card">
+                <h3>4. Non-Resident Taxable Person</h3>
+                <p>For individuals or businesses based outside India but supplying goods/services within India.
+                  Registration
+                  is mandatory.</p>
+              </div>
+
+              <div class="type-card">
+                <h3>5. E-Commerce Operator</h3>
+                <p>Compulsory for those running eCommerce platforms or aggregators. Includes marketplaces like Amazon,
+                  Flipkart, etc.</p>
+              </div>
+
+              <div class="type-card">
+                <h3>6. TDS/TCS Deductor</h3>
+                <p>Government departments or eCommerce platforms deducting tax at source must register under this
+                  category.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="Documents" class="gst-docs-section">
+          <div class="container">
+            <h2><span class="highlight">Documents Required</span> for GST Registration</h2>
+            <p>
+              Below is a detailed list of documents required for different types of businesses/entities for GST
+              registration
+              in India.
+              Ensuring that these are in order helps avoid delays during application and verification.
+            </p>
+
+            <div class="table-scroll-wrapper">
+              <table class="gst-docs-table">
+                <thead>
+                  <tr>
+                    <th>Entity Type</th>
+                    <th>Documents Required</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sole Proprietor / Individual</td>
+                    <td>
+                      <ol>
+                        <li>PAN card of the proprietor</li>
+                        <li>Aadhaar card</li>
+                        <li>Passport size photograph</li>
+                        <li>Bank account statement or cancelled cheque</li>
+                        <li>Address proof (electricity bill or rent agreement)</li>
+                      </ol>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Partnership Firm / LLP</td>
+                    <td>
+                      <ol>
+                        <li>PAN card of the firm</li>
+                        <li>Partnership deed / LLP agreement</li>
+                        <li>PAN and Aadhaar of all partners</li>
+                        <li>Bank account statement</li>
+                        <li>Authorization letter (if partner is authorized signatory)</li>
+                        <li>Address proof of principal place of business</li>
+                      </ol>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Private Limited Company</td>
+                    <td>
+                      <ol>
+                        <li>Certificate of Incorporation</li>
+                        <li>PAN card of the company</li>
+                        <li>MOA and AOA of the company</li>
+                        <li>Board resolution for authorized signatory</li>
+                        <li>PAN and Aadhaar of directors</li>
+                        <li>Bank details (statement or cancelled cheque)</li>
+                        <li>Registered office proof (ownership/rent document)</li>
+                      </ol>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>HUF (Hindu Undivided Family)</td>
+                    <td>
+                      <ol>
+                        <li>PAN card of HUF</li>
+                        <li>PAN and Aadhaar card of Karta</li>
+                        <li>Photograph of Karta</li>
+                        <li>Bank details</li>
+                        <li>Proof of business premises</li>
+                      </ol>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Trusts / Societies</td>
+                    <td>
+                      <ol>
+                        <li>Registration certificate of Trust or Society</li>
+                        <li>PAN card of the organization</li>
+                        <li>Identity & address proof of authorized person</li>
+                        <li>Photograph of authorized signatory</li>
+                        <li>Bank details</li>
+                        <li>Address proof of premises</li>
+                      </ol>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Foreign Non-Resident Taxable Person</td>
+                    <td>
+                      <ol>
+                        <li>Passport (for individuals) / tax ID (for business)</li>
+                        <li>Authorization form</li>
+                        <li>Bank account in India</li>
+                        <li>Address proof (local address in India)</li>
+                        <li>Photograph of authorized signatory</li>
+                      </ol>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section id="Fees" class="gst-fees-section">
+          <div class="container">
+            <h2>GST Registration<span class="highlight"> Fees</span></h2>
+            <p>
+              GST registration with the Government is <strong>completely free of charge</strong>. However, businesses
+              often
+              prefer expert assistance to ensure accurate documentation, faster processing, and smooth compliance.
+              Below is a breakdown of the optional professional service fees you may incur during GST registration.
+            </p>
+
+            <div class="fees-table-scroll">
+              <table class="fees-table">
+                <thead>
+                  <tr>
+                    <th>Service Type</th>
+                    <th>Description</th>
+                    <th>Fees (₹)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Government Fees</td>
+                    <td>Official registration fee paid to the GST portal</td>
+                    <td><strong>₹0</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Professional GST Registration</td>
+                    <td>Includes document preparation, GST application filing, and expert assistance</td>
+                    <td><del>₹749</del> <span class="offer-price">₹499</span> <small>*Limited time</small></td>
+                  </tr>
+                  <tr>
+                    <td>GST Return Filing (Optional)</td>
+                    <td>Monthly or quarterly GST return preparation & filing by a CA</td>
+                    <td>Starts from ₹499/month</td>
+                  </tr>
+                  <tr>
+                    <td>e-Invoicing Support</td>
+                    <td>Setup and compliance for businesses eligible under e-invoicing mandate</td>
+                    <td>₹999 one-time</td>
+                  </tr>
+                  <tr>
+                    <td>Additional Services</td>
+                    <td>Including HSN/SAC mapping, business classification, DSC setup, etc.</td>
+                    <td>As per requirement</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="note">
+              <p>💡 <strong>Note:</strong> Government does not charge any registration fee. Additional charges are only
+                for
+                professional or CA-assisted services.</p>
+            </div>
+          </div>
+        </section>
+        <section id="Process" class="gst-process-section">
+          <div class="container">
+            <h2><span class="highlight">Step-by-Step</span> GST Registration Process</h2>
+            <p>
+              Here are the 4 simple steps to complete your online GST registration:
+            </p>
+
+            <div class="process-flow">
+              <div class="step">
+                <div class="step-icon blue"><i class="icon">📄</i></div>
+                <h4>Step 1</h4>
+                <p>Get in touch with our experts</p>
+              </div>
+              <div class="arrow">➝</div>
+              <div class="step">
+                <div class="step-icon yellow"><i class="icon">📝</i></div>
+                <h4>Step 2</h4>
+                <p>Provide your business & document details</p>
+              </div>
+              <div class="arrow">➝</div>
+              <div class="step">
+                <div class="step-icon red"><i class="icon">📬</i></div>
+                <h4>Step 3</h4>
+                <p>We file the GST application on your behalf</p>
+              </div>
+              <div class="arrow">➝</div>
+              <div class="step">
+                <div class="step-icon green"><i class="icon">✅</i></div>
+                <h4>Step 4</h4>
+                <p>Receive your GSTIN & certificate</p>
+              </div>
+            </div>
+
+            <div class="detailed-steps">
+              <h3>Detailed Process:</h3>
+              <ol>
+                <li><strong>Consultation:</strong> Our team reviews your eligibility and advises the right type of GST
+                  registration (Regular, Composition, etc.).</li>
+                <li><strong>Document Collection:</strong> Submit PAN, Aadhaar, bank details, address proof, and
+                  business-related docs securely via our portal.</li>
+                <li><strong>Application Filing:</strong> We fill out Form GST REG-01, submit it to the GST portal, and
+                  handle
+                  all OTPs and verifications.</li>
+                <li><strong>ARN & Verification:</strong> Once submitted, an ARN (Application Reference Number) is
+                  generated to
+                  track your application.</li>
+                <li><strong>GSTIN Allotment:</strong> Upon approval by GST officials, your unique 15-digit GSTIN is
+                  issued
+                  along with the GST Registration Certificate.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- GST Certificate Section -->
+        <section id="GSTCertificate" class="gst-certificate-section">
+          <div class="container">
+            <div class="section-heading">GST Registration <span class="highlight">Certificate</span></div>
+            <div class="section-text">
+              A <strong>GST Registration Certificate</strong> is an official document issued by the GST department upon
+              successful registration. This certificate acts as legal proof of registration and contains important
+              details
+              about the taxpayer, including the GSTIN, business name, address, and date of registration.
+            </div>
+            <div class="certificate-point"><strong>Downloadable:</strong> Can be downloaded from the GST portal once
+              registration is approved</div>
+            <div class="certificate-point"><strong>Mandatory Display:</strong> Must be prominently displayed at the
+              primary
+              place of business</div>
+            <div class="certificate-point"><strong>Includes:</strong> Legal name, trade name, GSTIN, business address,
+              and
+              registration type</div>
+            <div class="certificate-point"><strong>Verification:</strong> QR code provided for authenticity verification
+            </div>
+            <div class="certificate-point"><strong>Update:</strong> Certificate gets updated upon any change in
+              registration
+              details</div>
+          </div>
+        </section>
+
+        <!-- Penalties Section -->
+        <section id="Penalties" class="gst-penalties-section">
+          <div class="container">
+            <div class="section-heading">GST Registration <span class="highlight"> Penalties</span></div>
+            <div class="section-text">
+              Failure to register under GST when liable to do so can result in significant penalties. The penalties are
+              imposed for late registration, non-registration, incorrect invoicing, non-filing of returns, or fraudulent
+              activities. Below are key consequences:
+            </div>
+            <div class="penalty-item"><strong>Non-Registration:</strong> Penalty of ₹10,000 or 10% of the tax due,
+              whichever
+              is higher</div>
+            <div class="penalty-item"><strong>Deliberate Tax Evasion:</strong> Penalty of ₹10,000 or 100% of tax due
+              (whichever is higher)</div>
+            <div class="penalty-item"><strong>Late Filing of Returns:</strong> ₹50/day (₹20 for NIL return), maximum
+              ₹5,000
+            </div>
+            <div class="penalty-item"><strong>Wrong Invoicing:</strong> ₹25,000 penalty for incorrect invoices or
+              non-compliance</div>
+            <div class="penalty-item"><strong>Failure to Display GSTIN:</strong> ₹50,000 (₹25,000 each under CGST and
+              SGST)
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="gst-faq-section">
+          <div class="container">
+            <div class="section-heading">GST Registration<span class="highlight"> FAQs</span></div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">What is GST registration?</h4>
+              <div class="section-text faq-answer">GST registration is a process by which a taxpayer gets registered
+                under
+                Goods and Services Tax. Once registered, a unique GSTIN is assigned. It enables businesses to collect
+                and
+                remit GST and claim input tax credit.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">Is GST registration mandatory?</h4>
+              <div class="section-text faq-answer">Yes, it is mandatory for businesses whose turnover exceeds prescribed
+                threshold limits, or those involved in inter-state supply, e-commerce, or specified services
+                irrespective of
+                turnover.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">How to get GST number?</h4>
+              <div class="section-text faq-answer">You can apply for a GST number online on the official GST portal by
+                submitting the required documents and completing verification.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">What is the GST registration number?</h4>
+              <div class="section-text faq-answer">The GST registration number (GSTIN) is a 15-digit alphanumeric code
+                assigned after successful registration, used for all GST compliance and transactions.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">What is the threshold limit for GST registration?</h4>
+              <div class="section-text faq-answer">₹40 lakhs for goods in normal states, ₹20 lakhs for services; lower
+                limits
+                apply to special category states. Exceeding this requires mandatory registration.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">What documents are required for GST registration?</h4>
+              <div class="section-text faq-answer">Documents such as PAN card, Aadhaar card, business address proof,
+                bank
+                account details, and photographs of the proprietor/partners/directors are typically required.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">Can I apply for GST registration without a business address?</h4>
+              <div class="section-text faq-answer">Yes, you can apply using a residential address or co-working space.
+                Proper
+                supporting documents are needed for verification.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">How long does it take to get a GST number?</h4>
+              <div class="section-text faq-answer">The GST number is usually issued within 3-7 working days after
+                submission,
+                depending on document accuracy and verification timelines.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">Can I cancel my GST registration?</h4>
+              <div class="section-text faq-answer">Yes, if you close your business or your turnover falls below the
+                threshold,
+                you can apply for cancellation on the GST portal.</div>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-question">Is there a penalty for not registering under GST?</h4>
+              <div class="section-text faq-answer">Yes, a penalty of ₹10,000 or 10% of the tax due (whichever is higher)
+                may
+                be imposed for non-registration.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="tab-nav sticky-tabs" id="desktopTabs">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#Threshold">Threshold Limits</a>
+        <a href="#Benefits">Benefits</a>
+        <a href="#Types">Types</a>
+        <a href="#Documents">Documents</a>
+        <a href="#Fees">Fees</a>
+        <a href="#Process">Process</a>
+        <a href="#GSTCertificate">GST Certificate</a>
+        <a href="#Penalties">Penalties</a>
+        <a href="#faq">FAQ's</a>
       </div>
     </div>
-  </section>
-  <section id="Documents" class="gst-docs-section">
-    <div class="container">
-      <h2><span class="highlight">Documents Required</span> for GST Registration</h2>
-      <p>
-        Below is a detailed list of documents required for different types of businesses/entities for GST registration
-        in India.
-        Ensuring that these are in order helps avoid delays during application and verification.
-      </p>
-
-      <div class="table-scroll-wrapper">
-        <table class="gst-docs-table">
-          <thead>
-            <tr>
-              <th>Entity Type</th>
-              <th>Documents Required</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sole Proprietor / Individual</td>
-              <td>
-                <ol>
-                  <li>PAN card of the proprietor</li>
-                  <li>Aadhaar card</li>
-                  <li>Passport size photograph</li>
-                  <li>Bank account statement or cancelled cheque</li>
-                  <li>Address proof (electricity bill or rent agreement)</li>
-                </ol>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Partnership Firm / LLP</td>
-              <td>
-                <ol>
-                  <li>PAN card of the firm</li>
-                  <li>Partnership deed / LLP agreement</li>
-                  <li>PAN and Aadhaar of all partners</li>
-                  <li>Bank account statement</li>
-                  <li>Authorization letter (if partner is authorized signatory)</li>
-                  <li>Address proof of principal place of business</li>
-                </ol>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Private Limited Company</td>
-              <td>
-                <ol>
-                  <li>Certificate of Incorporation</li>
-                  <li>PAN card of the company</li>
-                  <li>MOA and AOA of the company</li>
-                  <li>Board resolution for authorized signatory</li>
-                  <li>PAN and Aadhaar of directors</li>
-                  <li>Bank details (statement or cancelled cheque)</li>
-                  <li>Registered office proof (ownership/rent document)</li>
-                </ol>
-              </td>
-            </tr>
-
-            <tr>
-              <td>HUF (Hindu Undivided Family)</td>
-              <td>
-                <ol>
-                  <li>PAN card of HUF</li>
-                  <li>PAN and Aadhaar card of Karta</li>
-                  <li>Photograph of Karta</li>
-                  <li>Bank details</li>
-                  <li>Proof of business premises</li>
-                </ol>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Trusts / Societies</td>
-              <td>
-                <ol>
-                  <li>Registration certificate of Trust or Society</li>
-                  <li>PAN card of the organization</li>
-                  <li>Identity & address proof of authorized person</li>
-                  <li>Photograph of authorized signatory</li>
-                  <li>Bank details</li>
-                  <li>Address proof of premises</li>
-                </ol>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Foreign Non-Resident Taxable Person</td>
-              <td>
-                <ol>
-                  <li>Passport (for individuals) / tax ID (for business)</li>
-                  <li>Authorization form</li>
-                  <li>Bank account in India</li>
-                  <li>Address proof (local address in India)</li>
-                  <li>Photograph of authorized signatory</li>
-                </ol>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-  <section id="Fees" class="gst-fees-section">
-    <div class="container">
-      <h2><span class="highlight">GST Registration Fees</span></h2>
-      <p>
-        GST registration with the Government is <strong>completely free of charge</strong>. However, businesses often
-        prefer expert assistance to ensure accurate documentation, faster processing, and smooth compliance.
-        Below is a breakdown of the optional professional service fees you may incur during GST registration.
-      </p>
-
-      <div class="fees-table-scroll">
-        <table class="fees-table">
-          <thead>
-            <tr>
-              <th>Service Type</th>
-              <th>Description</th>
-              <th>Fees (₹)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Government Fees</td>
-              <td>Official registration fee paid to the GST portal</td>
-              <td><strong>₹0</strong></td>
-            </tr>
-            <tr>
-              <td>Professional GST Registration</td>
-              <td>Includes document preparation, GST application filing, and expert assistance</td>
-              <td><del>₹749</del> <span class="offer-price">₹499</span> <small>*Limited time</small></td>
-            </tr>
-            <tr>
-              <td>GST Return Filing (Optional)</td>
-              <td>Monthly or quarterly GST return preparation & filing by a CA</td>
-              <td>Starts from ₹499/month</td>
-            </tr>
-            <tr>
-              <td>e-Invoicing Support</td>
-              <td>Setup and compliance for businesses eligible under e-invoicing mandate</td>
-              <td>₹999 one-time</td>
-            </tr>
-            <tr>
-              <td>Additional Services</td>
-              <td>Including HSN/SAC mapping, business classification, DSC setup, etc.</td>
-              <td>As per requirement</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="note">
-        <p>💡 <strong>Note:</strong> Government does not charge any registration fee. Additional charges are only for
-          professional or CA-assisted services.</p>
-      </div>
-    </div>
-  </section>
-  <section id="Process" class="gst-process-section">
-    <div class="container">
-      <h2><span class="highlight">Step-by-Step</span> GST Registration Process</h2>
-      <p>
-        Here are the 4 simple steps to complete your online GST registration:
-      </p>
-
-      <div class="process-flow">
-        <div class="step">
-          <div class="step-icon blue"><i class="icon">📄</i></div>
-          <h4>Step 1</h4>
-          <p>Get in touch with our experts</p>
-        </div>
-        <div class="arrow">➝</div>
-        <div class="step">
-          <div class="step-icon yellow"><i class="icon">📝</i></div>
-          <h4>Step 2</h4>
-          <p>Provide your business & document details</p>
-        </div>
-        <div class="arrow">➝</div>
-        <div class="step">
-          <div class="step-icon red"><i class="icon">📬</i></div>
-          <h4>Step 3</h4>
-          <p>We file the GST application on your behalf</p>
-        </div>
-        <div class="arrow">➝</div>
-        <div class="step">
-          <div class="step-icon green"><i class="icon">✅</i></div>
-          <h4>Step 4</h4>
-          <p>Receive your GSTIN & certificate</p>
-        </div>
-      </div>
-
-      <div class="detailed-steps">
-        <h3>Detailed Process:</h3>
-        <ol>
-          <li><strong>Consultation:</strong> Our team reviews your eligibility and advises the right type of GST
-            registration (Regular, Composition, etc.).</li>
-          <li><strong>Document Collection:</strong> Submit PAN, Aadhaar, bank details, address proof, and
-            business-related docs securely via our portal.</li>
-          <li><strong>Application Filing:</strong> We fill out Form GST REG-01, submit it to the GST portal, and handle
-            all OTPs and verifications.</li>
-          <li><strong>ARN & Verification:</strong> Once submitted, an ARN (Application Reference Number) is generated to
-            track your application.</li>
-          <li><strong>GSTIN Allotment:</strong> Upon approval by GST officials, your unique 15-digit GSTIN is issued
-            along with the GST Registration Certificate.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-  <section id="GSTIN" class="gstin-section">
-    <div class="container">
-      <div class="section-heading">What is <span class="highlight">GSTIN?</span></div>
-      <div class="section-text">
-        GSTIN or <strong>Goods and Services Tax Identification Number</strong> is a unique 15-digit alphanumeric code
-        provided by the Goods and Services Tax Department to every registered taxpayer under GST. It is based on the
-        taxpayer’s PAN and state code, and serves as an identity number for businesses registered under the GST system.
-      </div>
-      <div class="section-text">
-        GSTIN is used by authorities to track compliance and filings, and by businesses to validate other suppliers and
-        vendors. It ensures transparency in the taxation system and allows businesses to claim Input Tax Credit on their
-        purchases. Every invoice, return, and communication with the GST department must quote this number.
-      </div>
-      <div class="gstin-point"><strong>Structure:</strong> 15 digits comprising state code, PAN, entity code, and
-        checksum digit</div>
-      <div class="gstin-point"><strong>Issued:</strong> Upon successful GST registration through the official GST portal
-      </div>
-      <div class="gstin-point"><strong>Mandatory:</strong> For businesses with turnover above threshold limits and
-        certain specified categories</div>
-      <div class="gstin-point"><strong>Used For:</strong> Filing GST returns, generating e-invoices, and availing tax
-        credits</div>
-      <div class="gstin-point"><strong>Publicly Verifiable:</strong> Anyone can verify a GSTIN on the official GST
-        portal</div>
-    </div>
-  </section>
-
-  <!-- GST Certificate Section -->
-  <section id="GSTCertificate" class="gst-certificate-section">
-    <div class="container">
-      <div class="section-heading">GST Registration <span class="highlight">Certificate</span></div>
-      <div class="section-text">
-        A <strong>GST Registration Certificate</strong> is an official document issued by the GST department upon
-        successful registration. This certificate acts as legal proof of registration and contains important details
-        about the taxpayer, including the GSTIN, business name, address, and date of registration.
-      </div>
-      <div class="certificate-point"><strong>Downloadable:</strong> Can be downloaded from the GST portal once
-        registration is approved</div>
-      <div class="certificate-point"><strong>Mandatory Display:</strong> Must be prominently displayed at the primary
-        place of business</div>
-      <div class="certificate-point"><strong>Includes:</strong> Legal name, trade name, GSTIN, business address, and
-        registration type</div>
-      <div class="certificate-point"><strong>Verification:</strong> QR code provided for authenticity verification</div>
-      <div class="certificate-point"><strong>Update:</strong> Certificate gets updated upon any change in registration
-        details</div>
-    </div>
-  </section>
-
-  <!-- Penalties Section -->
-  <section id="Penalties" class="gst-penalties-section">
-    <div class="container">
-      <div class="section-heading">GST Registration <span class="highlight"> Penalties</span></div>
-      <div class="section-text">
-        Failure to register under GST when liable to do so can result in significant penalties. The penalties are
-        imposed for late registration, non-registration, incorrect invoicing, non-filing of returns, or fraudulent
-        activities. Below are key consequences:
-      </div>
-      <div class="penalty-item"><strong>Non-Registration:</strong> Penalty of ₹10,000 or 10% of the tax due, whichever
-        is higher</div>
-      <div class="penalty-item"><strong>Deliberate Tax Evasion:</strong> Penalty of ₹10,000 or 100% of tax due
-        (whichever is higher)</div>
-      <div class="penalty-item"><strong>Late Filing of Returns:</strong> ₹50/day (₹20 for NIL return), maximum ₹5,000
-      </div>
-      <div class="penalty-item"><strong>Wrong Invoicing:</strong> ₹25,000 penalty for incorrect invoices or
-        non-compliance</div>
-      <div class="penalty-item"><strong>Failure to Display GSTIN:</strong> ₹50,000 (₹25,000 each under CGST and SGST)
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq" class="gst-faq-section">
-    <div class="container">
-      <div class="section-heading"><span class="highlight">GST Registration</span> FAQs</div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">What is GST registration?</h4>
-        <div class="section-text faq-answer">GST registration is a process by which a taxpayer gets registered under
-          Goods and Services Tax. Once registered, a unique GSTIN is assigned. It enables businesses to collect and
-          remit GST and claim input tax credit.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">Is GST registration mandatory?</h4>
-        <div class="section-text faq-answer">Yes, it is mandatory for businesses whose turnover exceeds prescribed
-          threshold limits, or those involved in inter-state supply, e-commerce, or specified services irrespective of
-          turnover.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">How to get GST number?</h4>
-        <div class="section-text faq-answer">You can apply for a GST number online on the official GST portal by
-          submitting the required documents and completing verification.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">What is the GST registration number?</h4>
-        <div class="section-text faq-answer">The GST registration number (GSTIN) is a 15-digit alphanumeric code
-          assigned after successful registration, used for all GST compliance and transactions.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">What is the threshold limit for GST registration?</h4>
-        <div class="section-text faq-answer">₹40 lakhs for goods in normal states, ₹20 lakhs for services; lower limits
-          apply to special category states. Exceeding this requires mandatory registration.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">What documents are required for GST registration?</h4>
-        <div class="section-text faq-answer">Documents such as PAN card, Aadhaar card, business address proof, bank
-          account details, and photographs of the proprietor/partners/directors are typically required.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">Can I apply for GST registration without a business address?</h4>
-        <div class="section-text faq-answer">Yes, you can apply using a residential address or co-working space. Proper
-          supporting documents are needed for verification.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">How long does it take to get a GST number?</h4>
-        <div class="section-text faq-answer">The GST number is usually issued within 3-7 working days after submission,
-          depending on document accuracy and verification timelines.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">Can I cancel my GST registration?</h4>
-        <div class="section-text faq-answer">Yes, if you close your business or your turnover falls below the threshold,
-          you can apply for cancellation on the GST portal.</div>
-      </div>
-
-      <div class="faq-item">
-        <h4 class="faq-question">Is there a penalty for not registering under GST?</h4>
-        <div class="section-text faq-answer">Yes, a penalty of ₹10,000 or 10% of the tax due (whichever is higher) may
-          be imposed for non-registration.</div>
-      </div>
-    </div>
-  </section>
-  <footer>
+  </main>
+   <footer>
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
             <div class="container py-5">
                 <div class="row g-5">
@@ -887,10 +935,8 @@
                                             <h3 class="text-white"><i class="fab fa-slack me-3"></i> licencesonline</h3>
                                             <!-- <img src="img/logo.png" alt="Logo"> -->
                                         </a>
-                                        <p class="text-white mb-4">Dolor amet sit justo amet elitr clita ipsum elitr
-                                            est.Lorem ipsum dolor
-                                            sit
-                                            amet, consectetur adipiscing...</p>
+                                        <p class="text-white mb-4">Get Expert Help with Business Licenses & More
+Trusted experts in FSSAI, GST, IEC, MSME & business transformation</p>
                                         <div class="footer-btn d-flex">
                                             <a class="btn btn-md-square rounded-circle me-3" href="#"><i
                                                     class="fab fa-facebook-f"></i></a>
@@ -906,12 +952,10 @@
                                 <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="footer-item">
                                         <h4 class="text-white mb-4">Useful Links</h4>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Features</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Services</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ's</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Blogs</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                                        <a href="index.html#features"><i class="fas fa-angle-right me-2"></i> Features</a>
+                                        <a href="index.html#faqs"><i class="fas fa-angle-right me-2"></i> FAQ's</a>
+                                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
                                     </div>
                                 </div>
                             </div>
@@ -938,7 +982,7 @@
                                                 </div>
                                                 <div>
                                                     <h4 class="text-white">Mail Us</h4>
-                                                    <p class="mb-0">info@example.com</p>
+                                                    <p class="mb-0">care@licencesonline.in</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -962,10 +1006,10 @@
                     <div class="col-xl-3">
                         <div class="footer-item">
                             <h4 class="text-white mb-4">Newsletter</h4>
-                            <p class="text-white mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum
-                                dolor sit
-                                amet,
-                                consectetur adipiscing elit.</p>
+                            <p class="text-white mb-3">
+Subscribe to get the latest updates, legal tips & exclusive offers on business licenses.
+
+</p>
                             <div class="position-relative rounded-pill mb-4">
                                 <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
                                     placeholder="Enter your email">
@@ -999,10 +1043,15 @@
         <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                    <div class="text-center">
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i
                                     class="fas fa-copyright text-light me-2"></i>licencesonline.in</a>, All right
                             reserved.</span>
+                             <ul style="display: flex; justify-content:center; align-items:center; gap:25px; color:rgb(255, 255, 255)">
+                            <li><a style="color: rgb(255, 255, 255);" href="Refund-Policy.html">Refund Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="Privacy-Policy.html">Privacy Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="TermsandServices.html">Terms and Services</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1010,8 +1059,45 @@
         <!-- Copyright End -->
     </footer>
 
+
   <!-- Back to Top -->
   <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabContainer = document.getElementById("desktopTabs");
+      const navLinks = tabContainer.querySelectorAll("a");
+
+      const sections = Array.from(navLinks).map(link => {
+        const id = link.getAttribute("href").replace("#", "");
+        return document.getElementById(id);
+      });
+
+      function updateActiveTab() {
+        const scrollY = window.scrollY + 160;
+        let current = "";
+
+        for (let section of sections) {
+          if (!section) continue;
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            current = section.id;
+            break;
+          }
+        }
+
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", updateActiveTab);
+    });
+  </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

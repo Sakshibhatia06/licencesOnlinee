@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Login via OTP | LicencesOnline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      padding: 40px;
+    }
+
+    .login-wrapper {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .login-wrapper h2 {
+      text-align: center;
+      color: #0a0a23;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      background: #172554;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #otp-section {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-wrapper">
+    <h2>Customer Login</h2>
+
+    <form id="login-form">
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="Enter Mobile Number" maxlength="10" required />
+
+      <div id="recaptcha-container"></div>
+      <button type="submit">Send OTP</button>
+
+      <div id="otp-section">
+        <label for="otp">Enter OTP</label>
+        <input type="text" id="otp" name="otp" placeholder="6-digit OTP" maxlength="6" />
+        <button type="button" onclick="verifyOTP()">Verify OTP</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // 🔐 Step 1: Firebase Config (Replace with your actual config)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDpeWNz_g65SHg139Y9UYiLdFIfAPj8XwU",
+      authDomain: "licencesonline.firebaseapp.com",
+      projectId: "licencesonline",
+      appId: "1:467155072395:web:cbfe8568f88703c30c2b8e"
+    };
+
+    // 🔌 Step 2: Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // 🔒 Step 3: Setup Invisible reCAPTCHA
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+      'size': 'invisible',
+      'callback': () => {
+        sendOTP();
+      }
+    });
+
+    const loginForm = document.getElementById("login-form");
+    const phoneInput = document.getElementById("mobile");
+    const otpSection = document.getElementById("otp-section");
+    const otpInput = document.getElementById("otp");
+
+    let confirmationResult;
+
+    // 📤 Send OTP
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const phoneNumber = "+91" + phoneInput.value.trim();
+      const appVerifier = window.recaptchaVerifier;
+
+      if (phoneInput.value.trim().length !== 10) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then(result => {
+          confirmationResult = result;
+          alert("OTP sent successfully.");
+          otpSection.style.display = "block";
+          otpInput.setAttribute("required", true);
+        })
+        .catch(error => {
+          alert("Error sending OTP: " + error.message);
+        });
+    });
+
+    // ✅ Verify OTP
+    function verifyOTP() {
+      const otp = otpInput.value.trim();
+      if (otp.length !== 6) {
+        alert("Please enter a 6-digit OTP.");
+        return;
+      }
+
+      confirmationResult.confirm(otp)
+        .then(result => {
+          alert("Login successful! Welcome " + result.user.phoneNumber);
+          // Optional: redirect or store session
+        })
+        .catch(error => {
+          alert("Invalid OTP. Please try again.");
+        });
+    }
+  </script>
+
+</body>
+
+</html>

@@ -30,127 +30,6 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-    <style>
-        .nav-bar {
-            box-shadow: 0px 6px 13px 2px #dcdcdc;
-            position: sticky;
-            top: 0px;
-            left: 0px;
-            z-index: 1000;
-        }
-
-        .container1 {
-            max-width: 1280px;
-            margin: auto;
-            padding: 40px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .content {
-            flex: 1 1 60%;
-        }
-
-        .form-box {
-            flex: 1 1 30%;
-            background: #fff;
-            height: 350px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 100px;
-        }
-
-        .form-box h3 {
-            margin-bottom: 20px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        .form-box input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-        .form-box button {
-            width: 100%;
-            padding: 12px;
-            background-color: #ffcc00;
-            color: #000;
-            border: none;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .hero h1 {
-            font-size: 40px;
-            font-weight: 900;
-            margin-bottom: 25px;
-        }
-
-        .hero ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .hero ul li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .hero ul li::before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: #015fc9;
-        }
-
-        .tab-nav {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            background: #e9f2ff;
-            border-radius: 10px 10px 0 0;
-            position: sticky;
-            top: 70px;
-            z-index: 1001;
-            overflow-x: auto;
-        }
-
-        .tab-nav a {
-            font-weight: 600;
-            color: #222;
-            padding-bottom: 5px;
-        }
-
-        .tab-nav a.active {
-            border-bottom: 2px solid #007bff;
-            color: #015fc9;
-        }
-
-        @media (max-width: 768px) {
-            .container1 {
-                flex-direction: column;
-            }
-
-            .form-box {
-                position: static;
-                top: unset;
-            }
-
-            .tab-nav {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -207,21 +86,45 @@
             <p>A fast, simple, and affordable way to get your GST Revocation done online — with complete expert support
                 and
                 compliance tracking.</p>
-            <ul>
-                <li><strong>Facing GST Cancellation? Don’t Worry – We’ll Get You Back on Track:</strong>
-                    If your GST registration has been cancelled due to non-compliance or any other reason, we’ll help
-                    you file for revocation quickly and correctly to avoid disruptions in business.</li>
-                <li><strong>Apply for GST Revocation with Expert Assistance – Get It Done in 2–3 Working Days:</strong>
-                    Submit your GST revocation application with all necessary documents, and our experts will handle the
-                    entire process — from preparation to approval.</li>
-                <li><strong> End-to-End Support for GST Reactivation – No Missed Steps, No Hassles:</strong> From
-                    checking eligibility and drafting representations to uploading documents and responding to notices,
-                    we manage everything so your GSTIN gets reactivated without delays.</li>
-            </ul>
+              <div class="flexx">
+  <ul class="feature-list">
+    <li>
+      <img src="https://cdn-icons-png.flaticon.com/512/3176/3176292.png" alt="Recovery Icon" width="40" />
+      <div>
+        <strong>Facing GST Cancellation? Don’t Worry – We’ll Get You Back on Track:</strong>
+        <p>If your GST registration has been cancelled due to non-compliance or any other reason, we’ll help
+        you file for revocation quickly and correctly to avoid disruptions in business.</p>
+      </div>
+    </li>
+
+    <li>
+    <img src="https://cdn-icons-png.flaticon.com/512/2910/2910702.png" alt="Application Icon" width="40" />
+
+      <div>
+        <strong>Apply for GST Revocation with Expert Assistance – Get It Done in 2–3 Working Days:</strong>
+        <p>Submit your GST revocation application with all necessary documents, and our experts will handle the
+        entire process — from preparation to approval.</p>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="feature-list">
+    <li>
+     <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Expert Support Icon" width="40" />
+      <div>
+        <strong>End-to-End Support for GST Reactivation – No Missed Steps, No Hassles:</strong>
+        <p>From checking eligibility and drafting representations to uploading documents and responding to notices,
+        we manage everything so your GSTIN gets reactivated without delays.</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
         </div>
 
-        <div class="form-box">
+        <div class="form-box1">
             <h3>Register Your Company Today</h3>
+             <input type="name" placeholder="Name">
             <input type="email" placeholder="Email">
             <input type="tel" placeholder="Mobile Number">
             <input type="text" placeholder="City/Pincode">
@@ -229,7 +132,8 @@
         </div>
     </div>
 
-    <div class="tab-nav" id="tabNav">
+    <div class="tab-nav11">
+    <div class="tab-nav1" id="tabNav1">
         <a href="#overview" class="active">GST Revocation</a>
         <a href="#Process">Process</a>
         <a href="#Documents">Documents</a>
@@ -238,7 +142,9 @@
         <a href="#Consequence">Consequence</a>
         <a href="#faq">FAQ's</a>
     </div>
-
+  </div>
+<div class="page-layout">
+    <div class="main-content">
     <section id="overview" class="gst-section">
         <div class="container">
             <h2>GST Revocation Overview</h2>
@@ -528,10 +434,7 @@
                 </ul>
             </div>
         </div>
-    </section>
-
-
-    <!-- Penalties Section -->
+    </section><!-- Penalties Section -->
    <section id="Consequence" class="gst-penalties-section">
   <div class="container">
     <div class="section-heading">Consequences of <span class="highlight">GST Revocation</span></div>
@@ -560,10 +463,7 @@
     </div>
   </div>
 </section>
-
-
-
-    <!-- FAQ Section -->
+<!-- FAQ Section -->
   <section id="faq" class="gst-faq-section">
   <div class="container">
     <div class="section-heading"><span class="highlight">GST Revocation</span> FAQs</div>
@@ -639,10 +539,18 @@
     </div>
   </div>
 </section>
-
-
-
-    <footer>
+</div>
+<div class="tab-nav sticky-tabs" id="desktopTabs">
+      <a href="#overview" class="active">GST Revocation</a>
+        <a href="#Process">Process</a>
+        <a href="#Documents">Documents</a>
+        <a href="#Fees">Fees/Charges</a>
+        <a href="#Time-Frame">Timeframe</a>
+        <a href="#Consequence">Consequence</a>
+        <a href="#faq">FAQ's</a>
+    </div>
+</div>
+     <footer>
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
             <div class="container py-5">
                 <div class="row g-5">
@@ -655,10 +563,8 @@
                                             <h3 class="text-white"><i class="fab fa-slack me-3"></i> licencesonline</h3>
                                             <!-- <img src="img/logo.png" alt="Logo"> -->
                                         </a>
-                                        <p class="text-white mb-4">Dolor amet sit justo amet elitr clita ipsum elitr
-                                            est.Lorem ipsum dolor
-                                            sit
-                                            amet, consectetur adipiscing...</p>
+                                        <p class="text-white mb-4">Get Expert Help with Business Licenses & More
+Trusted experts in FSSAI, GST, IEC, MSME & business transformation</p>
                                         <div class="footer-btn d-flex">
                                             <a class="btn btn-md-square rounded-circle me-3" href="#"><i
                                                     class="fab fa-facebook-f"></i></a>
@@ -674,12 +580,10 @@
                                 <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="footer-item">
                                         <h4 class="text-white mb-4">Useful Links</h4>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Features</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Services</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ's</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Blogs</a>
-                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                                        <a href="index.html#features"><i class="fas fa-angle-right me-2"></i> Features</a>
+                                        <a href="index.html#faqs"><i class="fas fa-angle-right me-2"></i> FAQ's</a>
+                                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
                                     </div>
                                 </div>
                             </div>
@@ -706,7 +610,7 @@
                                                 </div>
                                                 <div>
                                                     <h4 class="text-white">Mail Us</h4>
-                                                    <p class="mb-0">info@example.com</p>
+                                                    <p class="mb-0">care@licencesonline.in</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -730,10 +634,10 @@
                     <div class="col-xl-3">
                         <div class="footer-item">
                             <h4 class="text-white mb-4">Newsletter</h4>
-                            <p class="text-white mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum
-                                dolor sit
-                                amet,
-                                consectetur adipiscing elit.</p>
+                            <p class="text-white mb-3">
+Subscribe to get the latest updates, legal tips & exclusive offers on business licenses.
+
+</p>
                             <div class="position-relative rounded-pill mb-4">
                                 <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
                                     placeholder="Enter your email">
@@ -767,10 +671,15 @@
         <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                    <div class="text-center">
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i
                                     class="fas fa-copyright text-light me-2"></i>licencesonline.in</a>, All right
                             reserved.</span>
+                             <ul style="display: flex; justify-content:center; align-items:center; gap:25px; color:rgb(255, 255, 255)">
+                            <li><a style="color: rgb(255, 255, 255);" href="Refund-Policy.html">Refund Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="Privacy-Policy.html">Privacy Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="TermsandServices.html">Terms and Services</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -778,9 +687,45 @@
         <!-- Copyright End -->
     </footer>
 
+
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabContainer = document.getElementById("desktopTabs");
+    const navLinks = tabContainer.querySelectorAll("a");
 
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute("href").replace("#", "");
+      return document.getElementById(id);
+    });
+
+    function updateActiveTab() {
+      const scrollY = window.scrollY + 160;
+      let current = "";
+
+      for (let section of sections) {
+        if (!section) continue;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.id;
+          break;
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveTab);
+  });
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>

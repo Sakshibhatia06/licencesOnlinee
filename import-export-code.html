@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Importer Exporter Code Registration</title>
+    <link href="css/style.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:slnt,wght@-10..0,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      .form-box {
+      background: white;
+      width: 600px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    .form-step input,
+    .form-step select {
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      gap: 10px;
+      text-align: right;
+      display: flex;
+    justify-content: center;
+    }
+
+    .form-step h3{
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .form-box button {
+      padding: 10px 20px;
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .form-box button:hover {
+      background: #0668d7;
+    }
+    .floating-field {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.floating-field input {
+  width: 100%;
+  padding: 18px 12px 6px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  outline: none;
+}
+
+.floating-field label {
+  color: #0077ff;
+  position: absolute;
+  left: 12px;
+  padding: 0 6px;
+  background: white;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+/* Force label to always float */
+.floating-field.always-floating label {
+  top: 10px;
+  font-size: 11px;
+  color: #0077ff;
+}
+.flexxe{
+  display: grid;
+  gap:20px;
+  grid-template-columns: repeat(3,3fr);
+}
+.main-form-section{
+background: linear-gradient(135deg, #eaf6ff, #faf6f6);
+}
+
+
+    #page-content {
+      display: none;
+    }
+
+        @media (max-width: 768px) {
+          .card-main-container {
+    height: 600px;
+  }
+          .form-box{
+            width: 350px;
+          }
+          .form-step.active {
+    margin-top: 40px;}
+        
+          .card1{
+            width: 330px;
+            height: 200px;
+          }
+            .container1 {
+                flex-direction: column;
+            }
+
+            .form-box {
+                position: static;
+                top: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> licencesonline</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <div class="navbar">
+                    <div class="nav-center" id="navCenter">
+                        <div class="nav-item" data-flyout="business">Business Setup</div>
+                        <div class="nav-item" data-flyout="tax">Tax & Compliance</div>
+                        <div class="nav-item" data-flyout="others">About Us</div>
+                    </div>
+                    <div class="hamburger" onclick="toggleMobile()">☰</div>
+                </div>
+
+                <div class="flyout-wrapper" id="flyoutWrapper">
+                    <div class="flyout">
+                        <div class="flyout-left" id="leftMenu"></div>
+                        <div class="flyout-right" id="rightMenu"></div>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-wrapper" id="mobileMenu" style="display: none;">
+                    <!-- Dynamic menu pages will be injected here -->
+                </div>
+                <div class="d-none d-xl-flex flex-shrink-0 ps-4">
+                    <a href="#" class="btn btn-light btn-lg-square rounded-circle position-relative wow tada"
+                        data-wow-delay=".9s">
+                        <i class="fa fa-phone-alt fa-2x"></i>
+                        <div class="position-absolute" style="top: 7px; right: 12px;">
+                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
+                        </div>
+                    </a>
+                    <div class="d-flex flex-column ms-3">
+                        <span>Call to Our Experts</span>
+                        <a href="tel:+ 0123 456 7890"><span class="text-dark">Free: + 0123 456 7890</span></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+  <div id="main-form-section" class="main-form-section">
+      <section id="form-section">
+    <form id="multiStepForm" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+      <input type="hidden" name="subject" value="New Business Lead" />
+      <input type="hidden" name="redirect" value="" />
+
+      <!-- Step 1 -->
+      <div class="form-step active" id="step1">
+          <h2 style="margin-bottom: 20px; text-align:center" >Select Type Of <span style="color: #0077ff;">Service </span></h2>
+       <select name="business_type" id="businessType" required>
+          <option value="">-- Select --</option>
+          <option value="Importer">Importer</option>
+          <option value="Merchant-Exporter">Merchant-Exporter</option>
+          <option value="Wholesaler">Wholesaler</option>
+          <option value="Distributor">Distributor</option>
+          <option value="Retailer">Retailer</option>
+          <option value="Transporter">Transporter</option>
+          <option value="Storage-without-Atmospheric-Controller-Cold">Storage without Atmospheric Controller + Cold</option>
+          <option value="Food-Vending-Agencies">Food Vending Agencies</option>
+          <option value="Petty-Retailer-of-snacks/tea-shops">Petty Retailer of snacks/tea shops</option>
+          <option value="Hawker-(Itinerant / Mobile food vendor)">Hawker (Itinerant / Mobile food vendor)</option>
+          <option value="Direct-SellerSole-Proprietorship">Direct SellerSole Proprietorship</option>
+          <option style="background-color: red; font-weight:800" value="Don't-know">Don't Know</option>
+        </select>
+        <div class="buttons">
+          <button type="button" onclick="nextStep(1)">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="form-step" id="step2">
+         <h2 style="font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 20px;">
+ <span style="color: #0077ff;">Start Your Import Export Journey</span> & Get 
+<span style="color: #00b14f;">100% </span> Legal IEC Certificate in 1–2 Days
+
+</h2>
+
+  <div class="floating-field">
+    <input type="text" name="name" id="name" required placeholder=" " />
+    <label for="name">Your Name</label>
+  </div>
+
+  <div class="floating-field">
+    <input type="email" name="email" id="email" required placeholder=" " />
+    <label for="email">Your Email</label>
+  </div>
+
+  <div class="floating-field">
+    <input type="tel" name="phone" id="phone" required placeholder=" " />
+    <label for="phone">Mobile Number</label>
+  </div>
+        <div class="buttons">
+          <button type="button" onclick="prevStep(2)">Back</button>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </section>
+  </div>
+   <main id="page-content">
+     <div class="container1 hero">
+        <div class="content">
+            <div style="font-size: 14px; color: gray; margin-bottom: 10px;">
+                <a href="index.html">Home</a> > <a href="fssai-registration.html">Licenses & Registrations</a> > Importer Exporter Code Registration
+            </div>
+           <h1>IEC Registration Online – Get Your Import Export Code with Ease</h1>
+<p>
+  Launch your international trade journey with a quick, hassle-free, and expert-led IEC registration process — trusted by exporters, importers, and online sellers across India.
+</p>
+<div class="flexxe">
+
+<ul class="feature-list">
+  <li>
+    <img src="https://cdn-icons-png.flaticon.com/512/10329/10329818.png" alt="Rulebook Icon" width="32" />
+    <div>
+      <strong>Unsure If You Need an IEC? We’ll Help You Decide:</strong>
+      Whether you're starting an export-import business, dropshipping internationally, or selling via Amazon Global — our team will assess your trade goals and guide you through IEC applicability.
+    </div>
+  </li>
+</ul>
+
+<ul class="feature-list">
+  <li>
+   <img src="https://cdn-icons-png.flaticon.com/512/2943/2943849.png" alt="Fast Certificate Icon" />
+    <div>
+      <strong>Expert Filing & Fast Approval – IEC Issued Within 1–2 Days:</strong>
+      Submit your documents online and let our experts handle the rest. We ensure correct filing with the DGFT portal, helping you avoid rejections or delays.
+    </div>
+  </li>
+</ul>
+
+<ul class="feature-list">
+
+  <li>
+    <img src="https://cdn-icons-png.flaticon.com/512/235/235861.png" alt="Nationwide Network" width="32" />
+    <div>
+      <strong>Nationwide Service for All Businesses:</strong>
+      Whether you're an MSME, trader, manufacturer, or e-commerce seller — we handle IEC registration for businesses across India with personalized guidance at every step.
+    </div>
+  </li>
+</ul>
+</div>
+        </div>
+    </div>
+     <div class="tab-nav11">
+    <div class="tab-nav1" id="tabNav1">
+         <a href="#overview" class="active">Overview</a>
+        <a href="#Eligibilty">Eligibility Criteria</a>
+         <a href="#Benefits">Benefits</a>
+        <a href="#Process">Process</a>
+         <a href="#Documents">Documents</a>
+        <a href="#Fees">Fees/Charges</a>
+        <a href="#role">Role</a>
+        <a href="#Challenges">Challenges</a>
+        <a href="#faq">FAQ's</a>
+    </div>
+  </div>
+<div class="page-layout">
+    <div class="main-content">
+  <section id="overview" class="gst-section">
+  <div class="container">
+    <h2>Importer Exporter Code (IEC) <span class="highlight">Registration Overview</span></h2>
+    <p>
+      If you're planning to start an international trading business, obtaining an IEC (Importer Exporter Code) is the first legal step. IEC is a 10-digit code issued by the Directorate General of Foreign Trade (DGFT) and is mandatory for anyone importing or exporting goods or services from India.
+    </p>
+
+    <p>
+      IEC registration is a simple one-time process with lifetime validity. It is required at the time of customs clearance, foreign bank transactions, and to avail export incentives under government schemes. IEC is applicable to individuals, MSMEs, companies, and service providers involved in cross-border transactions.
+    </p>
+
+    <h3>What is IEC Registration?</h3>
+    <p>
+      IEC stands for Importer Exporter Code – a unique identification number issued by DGFT to businesses or individuals for undertaking import/export activities in India. It is linked to the PAN of the applicant and is required for international trade transactions, customs clearance, and global shipping.
+    </p>
+
+    <h3>Why is IEC Registration Important?</h3>
+    <ul class="gst-list">
+      <li><strong>Mandatory for Trade:</strong> Without IEC, you cannot legally import or export goods or services from India.</li>
+      <li><strong>Facilitates Customs Clearance:</strong> Required to get shipments released at ports and borders.</li>
+      <li><strong>Banking Compliance:</strong> Needed for foreign currency transactions through Indian banks.</li>
+      <li><strong>Enables Global Market Access:</strong> Essential for expanding your business into international markets.</li>
+    </ul>
+
+    <h3>Who Needs IEC Registration?</h3>
+    <ul class="gst-list">
+      <li><strong>Exporters:</strong> Businesses or individuals selling goods/services outside India.</li>
+      <li><strong>Importers:</strong> Entities purchasing goods or raw materials from other countries.</li>
+      <li><strong>E-commerce Sellers:</strong> Online sellers shipping internationally via Amazon, eBay, etc.</li>
+      <li><strong>Service Providers:</strong> Freelancers and agencies offering services to global clients.</li>
+    </ul>
+
+    <h3>Key Points to Remember:</h3>
+    <ul class="gst-list">
+      <li>IEC is mandatory before starting any import/export activity.</li>
+      <li>IEC is issued once and remains valid for a lifetime—no renewal required.</li>
+      <li>You must update your IEC details annually on the DGFT portal to keep it active.</li>
+      <li>IEC is linked to your PAN—any changes to PAN will require a new IEC application.</li>
+    </ul>
+
+    <h3>Why Choose IEC for Your Business?</h3>
+    <ul class="gst-list">
+      <li><strong>Expand Your Business Globally:</strong> IEC allows you to take your products or services to the international market.</li>
+      <li><strong>Easy International Payments:</strong> Facilitates receiving foreign remittances through authorized banks.</li>
+      <li><strong>Faster Customs Clearance:</strong> Smooth customs process for import/export of goods.</li>
+      <li><strong>Access to Export Incentives:</strong> Enables you to apply for schemes like RoDTEP, MEIS, SEIS, etc.</li>
+      <li><strong>Builds Credibility:</strong> Boosts trust among international buyers and suppliers.</li>
+    </ul>
+  </div>
+</section>
+<section id="Eligibilty" class="eligibility-section">
+  <div class="container">
+    <h2><span class="highlight"></span>Eligibility Criteria</span> for IEC Registration</h2>
+    <p class="description">Any individual or business involved in importing or exporting goods or services from India is required to obtain an Importer Exporter Code (IEC). Here’s who needs it:</p>
+    <ul>
+      <li>
+        <i class="fa fa-check-circle"></i>
+        <div>
+          <strong>Individual Traders & Freelancers</strong>
+          <span>Any person intending to export or import goods or services, including freelancers receiving international payments, must obtain an IEC.</span>
+        </div>
+      </li>
+      <li>
+        <i class="fa fa-check-circle"></i>
+        <div>
+          <strong>Proprietorships, Partnerships & MSMEs</strong>
+          <span>Small businesses and sole proprietors engaged in international trade are eligible to apply using their business PAN and bank account details.</span>
+        </div>
+      </li>
+      <li>
+        <i class="fa fa-check-circle"></i>
+        <div>
+          <strong>Private Limited & LLP Companies</strong>
+          <span>Incorporated entities involved in import/export activities require IEC for customs clearance and global transactions.</span>
+        </div>
+      </li>
+      <li>
+        <i class="fa fa-check-circle"></i>
+        <div>
+          <strong>E-commerce Sellers & Exporters</strong>
+          <span>Sellers on Amazon, Flipkart, Alibaba, or other platforms shipping internationally must register for IEC to fulfill export orders.</span>
+        </div>
+      </li>
+      <li>
+        <i class="fa fa-check-circle"></i>
+        <div>
+          <strong>Service Providers</strong>
+          <span>Agencies, consultants, IT professionals, and others providing services to foreign clients and receiving foreign currency must also obtain IEC.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<section id="Benefits" class="gst-benefits">
+  <h2><span class="highlight" style="color: #015fc9;">Why Choose</span> LicencesOnline for IEC Registration</h2>
+  <p class="subtitle">
+    From first-time exporters to growing import businesses, LicencesOnline simplifies the IEC registration process with fast filing, accurate documentation, and expert-led guidance. Here’s what makes us a trusted partner for global trade:
+  </p>
+
+  <div class="benefit-cards">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4222/4222735.png" alt="Consultation Icon" />
+      <h4>Free Business Assessment</h4>
+      <p>
+        Not sure if you need an IEC? We evaluate your business type and help you understand if and when IEC is required for your trade operations.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3503/3503789.png" alt="Filing Icon" />
+      <h4>Digital & Error-Free Filing</h4>
+      <p>
+        We file your IEC application directly on the DGFT portal with 100% document accuracy — eliminating delays and rejections.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3262/3262918.png" alt="Support Team" />
+      <h4>Dedicated Registration Support</h4>
+      <p>
+        Our team stays with you throughout — from document collection to status tracking and even post-registration updates.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1995/1995704.png" alt="Updates & Edits" />
+      <h4>Assistance with Amendments</h4>
+      <p>
+        Need to update your IEC details like address or entity name? We assist with amendments quickly and correctly through DGFT.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3523/3523885.png" alt="Fast Turnaround" />
+      <h4>Quick Code Delivery</h4>
+      <p>
+        Get your IEC issued in just 1–2 working days with our fast-tracked, expert-handled process — fully digital and stress-free.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" alt="Pricing Icon" />
+      <h4>Transparent & Budget-Friendly</h4>
+      <p>
+        Fixed pricing with no hidden charges. Whether you're a startup or an established exporter — we’ve got the right package for you.
+      </p>
+    </div>
+  </div>
+</section>
+   <section id="Process" class="gst-process-section">
+  <div class="container">
+    <h2><span class="highlight">Step-by-Step</span> IEC Registration Process</h2>
+    <p>
+      Obtaining your Importer Exporter Code (IEC) is a simple and fully online process. Whether you’re a first-time exporter or launching an import business, follow these three easy steps to register with DGFT.
+    </p>
+
+    <div class="process-flow">
+      <div class="step">
+        <div class="step-icon blue"><i class="icon">📁</i></div>
+        <h4>Step 1</h4>
+        <p>Document Preparation & Eligibility Check</p>
+      </div>
+      <div class="arrow">➝</div>
+      <div class="step">
+        <div class="step-icon yellow"><i class="icon">🌐</i></div>
+        <h4>Step 2</h4>
+        <p>Online Filing on DGFT Portal</p>
+      </div>
+      <div class="arrow">➝</div>
+      <div class="step">
+        <div class="step-icon green"><i class="icon">✅</i></div>
+        <h4>Step 3</h4>
+        <p>Code Issuance & Download</p>
+      </div>
+    </div>
+
+    <div class="detailed-steps">
+      <h3>Detailed Process:</h3>
+      <ol>
+        <li>
+          <strong>Document Collection & Business Verification:</strong> We begin by collecting your PAN card, business address proof, bank certificate or cancelled cheque, and applicant details. Based on your structure (individual, company, etc.), we guide you accordingly.
+        </li>
+
+        <li>
+          <strong>Digital Submission via DGFT:</strong> Our experts file your application online through the DGFT (Directorate General of Foreign Trade) portal. We ensure digital signature (DSC/Aadhaar) authentication and correct uploading of documents to avoid rejections.
+        </li>
+
+        <li>
+          <strong>Instant Code Allotment:</strong> Once verified, DGFT issues your 10-digit IEC code within 1–2 working days. You’ll receive a downloadable soft copy of the certificate via email. We assist in downloading and activating it if needed.
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+  <section id="Documents" class="gst-docs-section">
+  <div class="container">
+    <h2><span class="highlight">Documents Required</span> for IEC Registration</h2>
+    <p>
+      To obtain an Importer Exporter Code (IEC), you need to submit essential identity, address, and business proof documents. Below is a list of documents typically required for a smooth and error-free IEC registration process with DGFT.
+    </p>
+
+    <div class="table-scroll-wrapper">
+      <table class="gst-docs-table">
+        <thead>
+          <tr>
+            <th>Document Category</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PAN Card</td>
+            <td>
+              <ol>
+                <li>PAN Card of the applicant entity (Individual/Company/LLP/Firm)</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Identity & Address Proof</td>
+            <td>
+              <ol>
+                <li>Aadhaar Card / Voter ID / Passport of the applicant or authorized signatory</li>
+                <li>In case of a company or firm, address proof of directors/partners may also be needed</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Business Address Proof</td>
+            <td>
+              <ol>
+                <li>Utility bill (electricity/water) or lease/rent agreement of business premises</li>
+                <li>NOC from landlord if premises are rented</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Cancelled Cheque / Bank Certificate</td>
+            <td>
+              <ol>
+                <li>Cancelled cheque of business current account OR</li>
+                <li>Bank certificate as per DGFT prescribed format</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Company/Firm Registration Proof</td>
+            <td>
+              <ol>
+                <li>Certificate of Incorporation / Partnership Deed / MSME Registration (as applicable)</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Email ID & Mobile Number</td>
+            <td>
+              <ol>
+                <li>Valid mobile number and email ID for OTP verification and communication</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Digital Signature (Optional)</td>
+            <td>
+              <ol>
+                <li>Class 2 or Class 3 DSC if filing via digital signature (Aadhaar-based authentication is also accepted)</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Declaration Form</td>
+            <td>
+              <ol>
+                <li>Self-declaration or authorization letter signed by the applicant/authorized signatory</li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+  <section id="Fees" class="gst-fees-section">
+  <div class="container">
+    <h2><span class="highlight">Importer Exporter Code (IEC) Charges</span></h2>
+    <p>
+      The Importer Exporter Code (IEC) is issued by the Directorate General of Foreign Trade (DGFT) and is mandatory for anyone involved in importing or exporting goods or services from India. The government fee is fixed, while professional service fees may vary based on the scope of assistance required.
+    </p>
+
+    <div class="fees-table-scroll">
+      <table class="fees-table">
+        <thead>
+          <tr>
+            <th>Service Type</th>
+            <th>Description</th>
+            <th>Fees (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Government IEC Registration Fee</td>
+            <td>Official fee charged by DGFT for fresh IEC application (filed online)</td>
+            <td><strong>₹500</strong></td>
+          </tr>
+          <tr>
+            <td>Professional IEC Registration Assistance</td>
+            <td>End-to-end service for document preparation, online form submission, and DGFT liaison</td>
+            <td>Starting from ₹999</td>
+          </tr>
+          <tr>
+            <td>IEC Modification/Update</td>
+            <td>Changes to business name, address, PAN, director details, etc. on the IEC certificate</td>
+            <td>₹599 – ₹1,499 (plus govt. fee if applicable)</td>
+          </tr>
+          <tr>
+            <td>Digital Signature Certificate (DSC)</td>
+            <td>Optional, but recommended for faster and secure IEC filing (Class 2 or Class 3 DSC)</td>
+            <td>₹1,000 – ₹1,499</td>
+          </tr>
+          <tr>
+            <td>Business Setup Consultation (Optional)</td>
+            <td>Guidance on choosing entity type, compliance with GST, and export-import strategy</td>
+            <td>On Request</td>
+          </tr>
+          <tr>
+            <td>Reactivation of IEC (if deactivated)</td>
+            <td>Assistance in reactivating suspended or deactivated IEC through DGFT portal</td>
+            <td>₹699 – ₹1,299</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section id="role" class="gst-role-section">
+  <div class="container">
+    <h2><span class="highlight">Our Role</span> in IEC Registration</h2>
+    <p class="subtitle">
+      We act as your dedicated partner throughout the IEC registration journey, ensuring compliance, speed, and peace of mind. Here's what we handle:
+    </p>
+
+    <div class="role-grid">
+      <div class="role-item">
+        <i class="fa fa-search"></i>
+        <h4>Eligibility Check</h4>
+        <p>We assess your business structure and advise whether IEC is needed for your operations.</p>
+      </div>
+
+      <div class="role-item">
+        <i class="fa fa-file-alt"></i>
+        <h4>Document Preparation</h4>
+        <p>Assistance in collecting and organizing all required documents to prevent rejections.</p>
+      </div>
+
+      <div class="role-item">
+        <i class="fa fa-globe"></i>
+        <h4>Online Application Filing</h4>
+        <p>We complete and file your application on the DGFT portal on your behalf with accuracy.</p>
+      </div>
+
+      <div class="role-item">
+        <i class="fa fa-shield-alt"></i>
+        <h4>Digital Signature Assistance</h4>
+        <p>Help you get and configure your DSC if required for secure online filing.</p>
+      </div>
+
+      <div class="role-item">
+        <i class="fa fa-sync"></i>
+        <h4>Follow-Up & Corrections</h4>
+        <p>We track the application status and handle clarifications or modifications if needed.</p>
+      </div>
+
+      <div class="role-item">
+        <i class="fa fa-download"></i>
+        <h4>Certificate Delivery</h4>
+        <p>We send your IEC certificate to your registered email after successful approval.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Challenges" class="fssai-section">
+  <div class="container">
+    <h2><span class="highlight">Challenges</span> in Importer Exporter Code (IEC) Registration</h2>
+    <p>
+      While obtaining an IEC is a mandatory and relatively simple process, applicants often face unexpected issues due to documentation errors, portal glitches, and compliance confusion. Understanding these challenges can help streamline your IEC registration.
+    </p>
+
+    <h3>Common Challenges Faced:</h3>
+    <ol>
+      <li><strong>Incorrect PAN or Business Details:</strong> Mismatched information between PAN, firm name, and other records often leads to application rejection.</li>
+      <li><strong>Incomplete Bank Details:</strong> Missing or incorrect IFSC codes, account numbers, or canceled cheque documents result in validation failures.</li>
+      <li><strong>Digital Signature Certificate (DSC) Errors:</strong> For companies or LLPs, issues with DSC registration or expiration can halt the process.</li>
+      <li><strong>DGFT Portal Errors:</strong> Technical glitches, session timeouts, or server downtimes on the DGFT portal can interrupt application submission.</li>
+      <li><strong>Improper Document Format:</strong> Uploading unclear or unsupported file types (PDF, JPG, etc.) causes document rejection.</li>
+      <li><strong>Lack of Awareness About Annual Update:</strong> Many businesses are unaware that IEC must be updated every year—even if no changes are made—leading to deactivation by DGFT.</li>
+    </ol>
+
+    <p>
+      <strong>Pro Tip:</strong> Avoid delays and rejections by taking expert assistance through platforms like LicencesOnline for smooth and compliant IEC registration and updates.
+    </p>
+  </div>
+</section>
+ <section id="faq" class="gst-faq-section">
+  <div class="container">
+    <div class="section-heading"><span class="highlight">Importer Exporter Code</span> FAQs</div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">What is Importer Exporter Code (IEC)?</h4>
+      <div class="section-text faq-answer">
+        IEC is a 10-digit business identification number issued by the DGFT to entities or individuals who wish to import or export goods and services from India.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Is IEC registration mandatory?</h4>
+      <div class="section-text faq-answer">
+        Yes, IEC is mandatory for any business or individual involved in import or export unless exempted under specific cases such as personal goods or government entities.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Can an individual apply for IEC without a company?</h4>
+      <div class="section-text faq-answer">
+        Yes, even individuals can apply for IEC using their personal PAN and bank account details if operating as a sole proprietor.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">How long does it take to get an IEC?</h4>
+      <div class="section-text faq-answer">
+        Once submitted correctly, IEC is usually issued within 1 to 3 working days. Any discrepancies or document errors can cause delays.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Is there any renewal process for IEC?</h4>
+      <div class="section-text faq-answer">
+        Yes, IEC must be updated/confirmed online every year (even with no changes) between April to June. Failure to do so can lead to deactivation.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Can I cancel or surrender my IEC?</h4>
+      <div class="section-text faq-answer">
+        Yes, if you're no longer involved in import/export, you can surrender your IEC online through the DGFT portal. The code will be deactivated after proper verification.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Is IEC linked with PAN?</h4>
+      <div class="section-text faq-answer">
+        Yes, your IEC is issued against your PAN (individual or entity). Therefore, one IEC is allowed per PAN and cannot be duplicated.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Do I need a DSC for IEC registration?</h4>
+      <div class="section-text faq-answer">
+        For companies and LLPs, a Digital Signature Certificate (DSC) is mandatory to file IEC online. Proprietors can use Aadhaar OTP authentication instead.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Where do I apply for IEC?</h4>
+      <div class="section-text faq-answer">
+        IEC applications are filed on the DGFT’s official portal: <a href="https://www.dgft.gov.in" target="_blank">www.dgft.gov.in</a>. You’ll need to register, verify OTPs, upload documents, and make the required payment.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h4 class="faq-question">Can I use IEC for both import and export?</h4>
+      <div class="section-text faq-answer">
+        Yes, one IEC can be used for both importing and exporting goods and services — there is no need to apply separately.
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div class="tab-nav sticky-tabs" id="desktopTabs">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#Eligibilty">Eligibility Criteria</a>
+         <a href="#Benefits">Benefits</a>
+        <a href="#Process">Process</a>
+         <a href="#Documents">Documents</a>
+        <a href="#Fees">Fees/Charges</a>
+        <a href="#role">Role</a>
+        <a href="#Challenges">Challenges</a>
+        <a href="#faq">FAQ's</a>
+    </div>
+</div>
+   </main>
+
+
+
+     <footer>
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-9">
+                        <div class="mb-5">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-6 col-xl-7">
+                                    <div class="footer-item">
+                                        <a href="index.html" class="p-0">
+                                            <h3 class="text-white"><i class="fab fa-slack me-3"></i> licencesonline</h3>
+                                            <!-- <img src="img/logo.png" alt="Logo"> -->
+                                        </a>
+                                        <p class="text-white mb-4">Get Expert Help with Business Licenses & More
+Trusted experts in FSSAI, GST, IEC, MSME & business transformation</p>
+                                        <div class="footer-btn d-flex">
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i
+                                                    class="fab fa-twitter"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i
+                                                    class="fab fa-instagram"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-0" href="#"><i
+                                                    class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <div class="footer-item">
+                                        <h4 class="text-white mb-4">Useful Links</h4>
+                                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                                        <a href="index.html#features"><i class="fas fa-angle-right me-2"></i> Features</a>
+                                        <a href="index.html#faqs"><i class="fas fa-angle-right me-2"></i> FAQ's</a>
+                                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-5" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                            <div class="row g-0">
+                                <div class="col-12">
+                                    <div class="row g-4">
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Address</h4>
+                                                    <p class="mb-0">123 Street New York.USA</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fas fa-envelope fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Mail Us</h4>
+                                                    <p class="mb-0">care@licencesonline.in</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fa fa-phone-alt fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Telephone</h4>
+                                                    <p class="mb-0">(+012) 3456 7890</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Newsletter</h4>
+                            <p class="text-white mb-3">
+Subscribe to get the latest updates, legal tips & exclusive offers on business licenses.
+
+</p>
+                            <div class="position-relative rounded-pill mb-4">
+                                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Enter your email">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                            <div class="d-flex flex-shrink-0">
+                                <div class="footer-btn">
+                                    <a href="#" class="btn btn-lg-square rounded-circle position-relative wow tada"
+                                        data-wow-delay=".9s">
+                                        <i class="fa fa-phone-alt fa-2x"></i>
+                                        <div class="position-absolute" style="top: 2px; right: 12px;">
+                                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column ms-3 flex-shrink-0">
+                                    <span>Call to Our Experts</span>
+                                    <a href="tel:+ 0123 456 7890"><span class="text-white">Free: + 0123 456
+                                            7890</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="text-center">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i
+                                    class="fas fa-copyright text-light me-2"></i>licencesonline.in</a>, All right
+                            reserved.</span>
+                             <ul style="display: flex; justify-content:center; align-items:center; gap:25px; color:rgb(255, 255, 255)">
+                            <li><a style="color: rgb(255, 255, 255);" href="Refund-Policy.html">Refund Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="Privacy-Policy.html">Privacy Policy</a></li>
+                            <li><a style="color: rgb(255, 255, 255);" href="TermsandServices.html">Terms and Services</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+    </footer>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabContainer = document.getElementById("desktopTabs");
+    const navLinks = tabContainer.querySelectorAll("a");
+
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute("href").replace("#", "");
+      return document.getElementById(id);
+    });
+
+    function updateActiveTab() {
+      const scrollY = window.scrollY + 160;
+      let current = "";
+
+      for (let section of sections) {
+        if (!section) continue;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.id;
+          break;
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveTab);
+  });
+</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
