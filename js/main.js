@@ -312,51 +312,46 @@ window.addEventListener("scroll", () => {
     tabNav.style.position = "sticky";
   }
 });
- const formData = {
-    businessType: '',
-    name: '',
-    email: '',
-    phone: ''
-  };
+ document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registrationForm");
+    const checkbox = document.getElementById("agreeCheckbox");
+    const submitButton = document.getElementById("submitButton");
 
-  function nextStep(current) {
-    formData.businessType = document.getElementById("businessType").value;
-    document.getElementById("step" + current).classList.remove("active");
-    document.getElementById("step" + (current + 1)).classList.add("active");
-    document.getElementById("name").value = formData.name;
-    document.getElementById("email").value = formData.email;
-    document.getElementById("phone").value = formData.phone;
-  }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const fdata = new FormData(form);
 
-  function prevStep(current) {
-    formData.name = document.getElementById("name").value;
-    formData.email = document.getElementById("email").value;
-    formData.phone = document.getElementById("phone").value;
-    document.getElementById("step" + current).classList.remove("active");
-    document.getElementById("step" + (current - 1)).classList.add("active");
-    document.getElementById("businessType").value = formData.businessType;
-  }
-
-  document.getElementById("multiStepForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const fdata = new FormData(form);
-
-    fetch(form.action, {
-      method: "POST",
-      body: fdata,
-    })
-      .then((response) => {
-        if (response.ok) {
-          document.getElementById("main-form-section").style.display = "none";
-          document.getElementById("page-content").style.display = "block";
-        } else {
-          alert("Form submission failed. Try again.");
-        }
+      fetch(form.action, {
+        method: "POST",
+        body: fdata,
       })
-      .catch((error) => {
-        console.error("Web3Forms error:", error);
-        alert("Something went wrong.");
-      });
+        .then((response) => {
+          if (response.ok) {
+            form.style.display = "none";
+            const successSection = document.getElementById("page-content");
+            if (successSection) successSection.style.display = "block";
+
+            // ✅ Reset form and disable button again
+            form.reset();
+            submitButton.disabled = true;
+          } else {
+            alert("Form submission failed. Please try again.");
+          }
+        })
+        .catch((error) => {
+          console.error("Web3Forms error:", error);
+          alert("Something went wrong. Please try again.");
+        });
+    });
+
+   if (checkbox && submitButton) {
+  submitButton.disabled = true; // Force-disable on load
+
+  checkbox.addEventListener("change", function () {
+    submitButton.disabled = !this.checked;
   });
+}
+  });
+
+
+
