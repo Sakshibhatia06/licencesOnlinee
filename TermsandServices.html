@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Refund & Cancellation Policy </title>
+    <title>Terms & Services Policy </title>
     <link href="css/style.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -300,6 +300,55 @@ Subscribe to get the latest updates, legal tips & exclusive offers on business l
         </div>
         <!-- Copyright End -->
     </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabContainer = document.getElementById("desktopTabs");
+    const navLinks = tabContainer.querySelectorAll("a");
+
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute("href").replace("#", "");
+      return document.getElementById(id);
+    });
+
+    function updateActiveTab() {
+      const scrollY = window.scrollY + 160;
+      let current = "";
+
+      for (let section of sections) {
+        if (!section) continue;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.id;
+          break;
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveTab);
+  });
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
 
 </body>
 </html>
